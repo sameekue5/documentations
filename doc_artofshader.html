@@ -8,7 +8,7 @@
         var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
 
         var base = document.createElement('base');
-        var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://docs.athiangames.com/';
         base.href = servername;
         document.getElementsByTagName('head')[0].appendChild(base);
     </script>
@@ -199,7 +199,7 @@
                         Tutorial Blueprints will walk you through the various classes, variables and functionalities, with detailed description and usefulness of each and every property that you need to know about. The Tutorial Blueprints will be found inside the <strong>Tutorials</strong> folder.
                     </p>
                     <video width="1100" src="videos/artofshader/tutorialbps.m4v" type="video/m4v" autoplay loop playsinline style="pointer-events: none;">
-                   
+
                </div>
 
                 <div id="AOSActor">
@@ -294,14 +294,14 @@
                         To populate your main environment, create an element in the <strong>MainShaders</strong> array in the instance of the <strong>BP_ArtOfShader</strong> you placed in your level. This element will represent a single group of Post Process Materials having common Localization and Blending properties.
                     </p>
                     <p>
-                       In the <strong>Materials</strong> array, create an array element, and assign a Post Process Material instance from the corresponding folder, i.e., if you have purchased the Stylized Post Process Pack, then the Material Instances will be found at <strong>StylizedPostProcesses/MaterialInstances</strong>.  
+                       In the <strong>Materials</strong> array, create an array element, and assign a Post Process Material instance from the corresponding folder, i.e., if you have purchased the Stylized Post Process Pack, then the Material Instances will be found at <strong>StylizedPostProcesses/MaterialInstances</strong>.
                     </p>
                     <img style="padding-left:20px;" src="images/artofshader/ppmaterialbrowser.jpg">
                     <p>
                         Now you can see that the corresponding Post Process Material has been applied on your main environment. You can add more elements in the <strong>Materials</strong> array to combine multiple Blendables together, although not all of them will look equally good when combined with one another, so a lot of factors will come into play, and we will learn more about them as we progress.
                      </p>
                      <p>
-                        You can change the <strong>Blend</strong> value from 0 to 1, where 0 being no effect of the material(s) in the scene, while 1 means full effect. Blend happens through linear interpolation, and is different than the weight blended system present in the Post Process Volume Actor. 
+                        You can change the <strong>Blend</strong> value from 0 to 1, where 0 being no effect of the material(s) in the scene, while 1 means full effect. Blend happens through linear interpolation, and is different than the weight blended system present in the Post Process Volume Actor.
                      </p>
                     <div class="wrapper">
                         <video class="video" controls loop>

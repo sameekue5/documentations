@@ -8,7 +8,7 @@
 
     <script>
         var base = document.createElement('base');
-        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+         var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://docs.athiangames.com/';
         base.href = servername;
         document.getElementsByTagName('head')[0].appendChild(base);
     </script>
@@ -90,23 +90,23 @@
 
         <template id="SPPLightBoxTemplate">
             <div class="LightBox-Tab">
-               
+
                 <h4 id = "Title">TItle</h4>
                 <button type=" button " onclick="window.open( 'https://discord.gg/6qh6Cuy') ">Get It Here</button>
                 <img src="images/artofshader/stylizedpostprocess/stylizedcover.jpg">
              </div>
-           
+
             <!-- <div id = "FullBlend" class="tabcontent" style="display: block;">
-                <iframe id="videofullblend" 
-                onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';" scrolling="no" 
+                <iframe id="videofullblend"
+                onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';" scrolling="no"
                 ></iframe>
             </div>
             <div id = "HalfBlend"  class="tabcontent">
                 <iframe id="videohalfblend"
-                onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';" scrolling="no" 
+                onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';" scrolling="no"
                 ></iframe>
             </div> -->
-           
+
        </template>
 
         <template id="SPPNaviagationTemplate">

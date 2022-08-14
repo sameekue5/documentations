@@ -9,7 +9,7 @@
 
     <script>
         var base = document.createElement('base');
-        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+         var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://docs.athiangames.com/';
         base.href = servername;
         document.getElementsByTagName('head')[0].appendChild(base);
     </script>
