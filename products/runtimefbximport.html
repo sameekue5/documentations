@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+
+    <title>Runtime FBX Import</title>
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+
+    <link href="content/site.css" rel="stylesheet" />
+
+    <link href="content/loader.css" rel="stylesheet" />
+
+    <link href="content/mainpage.css" rel="stylesheet">
+
+    <link href="content/productpage.css" rel="stylesheet">
+
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/header.html" : "https://athiangames.com/header"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/footer.html" : "https://athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+
+
+</head>
+
+<body>
+
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+        <div id="HeaderNavDiv"></div>
+
+        <div class="ImageWrapper">
+
+            <img src="images/assetimport/fbximportcover.png">
+
+            <div class="OverlayText ProductTitle">
+
+                <h1>Runtime FBX Import </h1>
+
+                <h2>for Unreal Engine 4</h2>
+
+                <p>
+
+                    Asynchronously Import FBX files in your Unreal projects, in runtime. Highly detailed FBX scenes can be loaded very fast, and grouping of a single file into Nodes and Material sections further allows you to generate an entire scene comprising of various
+                    interactive actors, from a single FBX file.
+
+                </p>
+
+                <button type="button" onclick="window.open('https://www.unrealengine.com/marketplace/en-US/slug/runtime-fbx-import-asynchronous')">Get It Here</button>
+                <button id="DocumentationButton" type="button" onclick="return ResolveDocumentationURL('doc_fbximport')">Documentation</button>
+                <button type="button" onclick="window.open('https://discord.gg/hsejuTW')">Join Discord</button>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="SectionDiv">
+            <div class="container">
+                <div class="SectionDivRow">
+
+                    <h1>FEATURES</h1>
+
+                </div>
+
+                <div class="SectionDivRow">
+
+                    <div class="SectionContent">
+
+                        <h2>1. Asynchronously Import FBX files in runtime.</h2>
+
+                        <h2>
+
+                            2. Relevant Textures(Diffuse, Normal, Specular, Opacity) are auto imported with the mesh and can be applied to the generated Procedural Mesh Components, each unique to a material index and is a child of a specific node, as read from the source file .
+
+                        </h2>
+
+                        <h2>
+
+                            3. Custom collisions can be applied in the generated mesh component via UCX_ prefix as read from the source file.
+
+                        </h2>
+
+                        <h2>
+
+                            4. Built in support for designing changeable material property layout for every Mesh Component.
+
+                        </h2>
+
+                        <h2>
+
+                            5. Every FBX scene imported is represented by a custom actor which hosts all the Procedural Mesh Components generated from the nodes read from the source file. Hence every FBX scene can have its own set of custom logic, allowing user to implement this
+                            plugin in number of various scenarios, from importing larger scenes, to interactive smaller props like weapons , barrels, etc.
+
+                        </h2>
+
+                        <h2>
+
+                            6. Load and Save System implemented for storing the Imported FBX Meshes in desired location in hard drive, and loading it without importing it all over again, in the next session.
+
+                        </h2>
+
+                    </div>
+
+
+
+                    <div class="FeaturedVideoDiv">
+
+                        <a id="FeaturedVideoThumb" href="#">
+
+                            <img width="800" src="images/assetimport/fbxvideothumbnail.png" />
+
+                        </a>
+
+                        <video id="FeaturedVideo" style="display:none" width="800">
+
+                        <source id="mp4" src="videos/fbximport_demo.mp4" type="video/mp4">
+
+                    </video>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+    </div>
+
+
+    <script src="scripts/producttemplate.js"></script>
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+
+</body>
+
+</html>

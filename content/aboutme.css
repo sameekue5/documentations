@@ -1,0 +1,105 @@
+.box {
+    user-select: none;
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    position: absolute;
+    display: inline-block;
+    object-fit: cover;
+    width: 100%;
+    /* Make the width of box same as image */
+}
+
+.box .Text1 {
+    position: absolute;
+    top: 150px;
+    margin-left: 50px;
+    /* Adjust this value to move the positioned div up and down */
+    text-align: left;
+    width: 60%;
+    /* Set the width of the positioned div */
+}
+
+.AboutContainer {
+    padding-left: 35%;
+    padding-right: 20%;
+    padding-top: 50px;
+    -webkit-transition: padding-left 0.2s;
+}
+
+.AboutContainer p {
+    font-style: normal;
+}
+
+.ImageWrapper1 {
+    position: relative;
+    height: 0;
+    margin-left: -10px;
+    margin-right: -10px;
+    text-align: center;
+    color: white;
+    -webkit-transition: height 0.1s;
+}
+
+.ImageWrapper1 img {
+    object-fit: cover;
+    width: 100%;
+    height: 600px;
+    -webkit-transition: height 0.5s;
+}
+
+.ImageWrapper1 {
+    height: 100%
+}
+
+.AboutMeTitle p {
+    padding-top: 50px;
+    padding-left: 20px;
+    text-align: left;
+    -webkit-transition: padding-top 0.1s;
+    font-size: 16px;
+    font-style: normal;
+}
+
+.OverlayText.AboutMeTitle {
+    top: -30px;
+}
+
+h4 {
+    color: antiquewhite;
+    font-weight: lighter;
+}
+
+h2 {
+    color: antiquewhite;
+    font-weight: lighter;
+}
+
+::selection {
+    background-color: antiquewhite;
+    color: antiquewhite;
+}
+
+h3 {
+    color: antiquewhite;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 11%;
+}
+
+p {
+    margin-left: 1%;
+    margin-right: 12%;
+    padding-top: 2%;
+    color: antiquewhite;
+    font-weight: lighter;
+    font-size: 16px;
+    font-style: oblique;
+}

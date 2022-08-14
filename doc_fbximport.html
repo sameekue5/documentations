@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script>
+        var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+
+        var base = document.createElement('base');
+        var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+    <link href="content/site.css" rel="stylesheet" />
+    <link href="content/loader.css" rel="stylesheet" />
+    <link href="content/sidenav.css" rel="stylesheet">
+    <link href="content/documentation.css" rel="stylesheet">
+    <link href="content/mainpage.css" rel="stylesheet">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>Runtime FBX Import | Documentation</title>
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/docheader.html" : "https://docs.athiangames.com/docheader"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/footer.html" : "https://docs.athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+</head>
+
+
+
+<body id="page-top">
+
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+        <div id="HeaderNavDiv"></div>
+
+
+        <div class="sidenav" id="SideNavigationDiv">
+
+            <ul>
+
+                <li class="dropdown-btn"><a href="#ClassDescription">Class Description</a></li>
+
+                <li class="content">
+                    <a href="#fbximportManager">FBX Import Manager</a>
+                    <a href="#FBXMeshActor">FBX Mesh Actor</a>
+                </li>
+
+                <li class="dropdown-btn"><a href="#GettingStarted">Getting Started</a></li>
+
+                <li class="content">
+                    <a href="#fbximportManager">FBX Import Manager</a>
+                    <a href="#ThePluginStructure">The Plugin Structure</a>
+                    <a href="#TheProjectStructure">The Project Structure</a>
+                </li>
+
+                <li class="dropdown-btn"><a href="#ImportingFBXFiles">Importing FBX Files</a></li>
+
+                <li class="content">
+                    <a href="#TheImportFunction">The Import Function</a>
+                    <a href="#TheOpenFileDialogue">The Open File Dialogue</a>
+                    <a href='#AddingMaterials'>Adding Materials</a>
+                    <a href='#CreatingCollisions'>Creating Collisions</a>
+                    <a href='#ImportNotificationEvents'>Import Notification Events</a>
+                    <!-- <a href='#SelectingMeshComponents'>Selecting Mesh Components</a> -->
+                </li>
+
+                <li class="dropdown-btn"><a href="#UsingParameterizedMaterials">UsingParameterizedMaterials</a></li>
+
+                <!-- <li class="content">
+                    <a href="#UpdatingScalarParam">Updating Scalar Parameter</a>
+                    <a href="#UpdatingVectorParam">Updating Vector Parameter</a>
+                    <a href='#UpdatingTextureParam'>Updating Texture Parameter</a>
+                    <a href='#UpdatingMaterial'>Updating Material</a>
+                </li> -->
+
+                <li class="dropdown-btn"><a href="#LoadingAndSaving">Loading And Saving</a></li>
+
+                <li class="content">
+                    <a href="#SavingFBXActor">Saving FBX Actor</a>
+                    <a href="#LoadingFBXActor">Loading FBX Actor</a>
+                </li>
+
+
+            </ul>
+
+        </div>
+
+
+
+        <div class="DocContainer">
+
+            <h1>Runtime FBX Import Documentation</h1>
+            <p>
+                This documentation covers details of how to integrate this plugin in your own project. By the end of this documentation you should be able to have a better understanding of importing custom FBX meshes from hard drive during gameplay in your unreal project,
+                and triggering notifications or perform other tasks while the import is in progress, as the process is asynchronous. You will also have a clear understanding of updating material properties for individual sections.
+            </p>
+
+            <div id="ClassDescription">
+                <h5>Class Description</h5>
+                <p>
+                    Before we get started, We will be looking into two main classes that drive the entire Import process.
+                </p>
+
+                <div id="fbximportManager">
+                    <h6>The FBX Import Manager</h6>
+                    <p>
+                        The <strong>fbximportManager</strong> Actor class is responsible for handling the import of FBX files and generatation of Procedural Mesh Components from the imported FBX scenes. A child Blueprint derived from the <strong>fbximportManager</strong>,
+                        found in the Blueprints folder of the plugin Content directory, has been created as an example and can be used to quickly start implementing this plugin in your projects. You must place an instance of the <strong>fbximportManager</strong>                        in your level, before you can begin importing your files.
+                    </p>
+
+                </div>
+                <div id="FBXMeshActor">
+
+                    <h6>The FBX Mesh Actor</h6>
+                    <p>
+                        Every FBX file requested for import within the <strong>fbximportManager</strong>, corresponds to a spawned instance of <strong>FBXMeshActor</strong> class. We can use reference to this class to manipulate actor specific modifications
+                        like setting transform and updating materials.
+
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div id="GettingStarted">
+
+                <h5>Getting Started</h5>
+
+                <p>
+
+                    Once you have installed the plugin from the launcher, ensure that the plugin is enabled by visiting the plugin window and browsing over to the Runtimefbximport plugin.
+
+                </p>
+
+                <img src="images/assetimport/pluginwindow.jpg">
+
+                <p>
+                    If you have not downloaded the example project yet, you can <a href="https://athiangames.com/projectfiles/fbximportexamples.zip">download it here</a>.
+                </p>
+                <p>Once you have opened the project and enabled the plugin, you can hit play to quickly test out the functionalities. Using left mouse button you can specify where you want to spawn the FBX, and then click on the import button, and select
+                    your file to begin the asynchronous import process.
+                </p>
+                <img src="images/assetimport/importfbxtest.jpg">
+                <p>Once the Import is completed you can select individual components of your imported Actor with Left mouse click and change properties, like set Textures, Color, or entire material. You can also hide/unhide or isolate individual sections
+                    of selected actor, if required.
+                </p>
+
+                <div id="ThePluginStructure">
+
+                    <h6>The Plugin Structure</h6>
+                    <p>
+                        The Plugin Content directory contains example blueprints and widgets which is very useful as a starting point to understand the functinalities of the plugin as well as to test out the core features.
+                    </p>
+                    <p>
+                        To view the Plugin Content directory, you need to click on the eye icon at the bottom right of the Content Browser, and enable <strong>Show Engine Content</strong>.
+                    </p>
+                    <img src="images/assetimport/showenginecontent.jpg">
+
+                    <p>
+                        Inside the Blueprints folder, you will find <strong>BP_fbximportManager</strong>, which is derived from the <strong>fbximportManager</strong> class, and <strong>BP_FBXMeshActor</strong>, derived from <strong>FBXMeshActor</strong>                        class.
+
+                    </p>
+                    <img src="images/assetimport/pluginbpdirectory.jpg">
+
+                    <p>
+                        <strong>BP_fbximportManager</strong> demonstrates, with commented examples, how to Import FBX file from a given path, and how to handle Import events, Select or DeSelect imported actors, and update properties of selected actors.
+                        <img src="images/assetimport/fbximportManagerBP.jpg">
+                    </p>
+                </div>
+
+                <div id="TheProjectStructure">
+
+                    <h6>The Project Structure</h6>
+                    <p>
+                        The character BP, <strong>BP_FlyCamCharacter</strong> , which you can find on navigating inside the Blueprints folder of the project directory, is responsible for using the fbximportFunction to import FBX, and also determining
+                        which components to select using Line Trace. Obviously this is just for demonstration and you can have your own representation of how you want to import your FBX mesh.
+                    </p>
+                    <img src="images/assetimport/importfbxbpexample.jpg">
+
+                </div>
+
+            </div>
+
+
+
+            <div id="ImportingFBXFiles">
+
+                <h5>Importing FBX Files</h5>
+
+                <p>
+
+                    The import process is a multi threaded or asynchronous operation. The FBX scene from the given file path is read as groups of Nodes, each node consisting of FBX mesh with several unique material sections. Each such section is generated as a Procedural
+                    Mesh Component that is then displayed in the Unreal Scene. Each section is a child of a particular node, as read from the original source file. So each Procedural Mesh Component has a NodeID as well as a SectionID.
+
+                </p>
+
+                <p>
+
+                    Since the process can take a while to fully load the entire FBX scene, depending on the complexity of the given FBX scene, we have custom events that get triggered during the import, and can be used to display custom notifications, or perform other tasks
+                    relevant to the Node being imported currently.
+
+                </p>
+
+
+
+                <div id="TheImportFunction">
+
+                    <h6>The Import Function</h6>
+
+                    <p>
+
+                        The function ImportFBXFile begins the asynchronous operation of a single FBX file, with the full filepath and the world location for the import, as input parameters. This function resides inside the fbximportManager class.
+
+                    </p>
+
+                    <img src="images/assetimport/importfbx.jpg">
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Input Parameter</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>FileName</td>
+
+                                    <td>FBX file name to be included, consisting of the name and extension of the file as well as full filepath.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Location</td>
+
+                                    <td>World Location where the meshes read from the given FBX file is generated procedurally.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Base Material</td>
+
+                                    <td>Default material to be applied on the generated procedural mesh.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Collision Type</td>
+
+                                    <td>If the generated mesh has no collision, or custom collision as read from the source file.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div id="TheOpenFileDialogue">
+
+                    <h6>The OpenFile Dialogue</h6>
+
+                    <p>
+
+                        When the function ImportFBXFile is called, we specify string FileName, which contains the fullpath, like "D:\Projects\FBX\Girl01.fbx". This can be constructed from the list of Blueprint exposed Path functions relative to the Project Directory, as shown
+                        below.
+
+                    </p>
+
+                    <img src="images/assetimport/importfbx.jpg">
+
+                    <p>
+
+                        However, if you want to manually choose one or multiple FBX files, you can call the function OpenFBXFileDialogue. This function brings the Windows default OpenFile Dialogue, with the Filetypes restricted to only FBX.
+
+                    </p>
+
+                    <img src="images/assetimport/openfbxfiledialogue.jpg">
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Output Parameter</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>FileNames</td>
+
+                                    <td>The full FileNames (Name, extension and path information) of the files selected from the OpenFile Dialogue.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Return Value</td>
+
+                                    <td>True if FileNames are succesfully selected, False if the File Selection is cancelled.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div id="AddingMaterials">
+
+                    <h6>Adding Materials</h6>
+
+                    <p>
+
+                        An FBX mesh usually contains materials applied to them, divided into material sections with unique section indices. Each material section comprises of Materials developed in external 3d application, but contains common data like diffuse, opacity, normal,
+                        emissive and specular textures, diffuse color, etc. When an FBX mesh is imported, it also reads and imports the color and texture values from the corresponding source file. This values are set and applied in parameterized materials
+                        that we can add in our Procedural Mesh Component which are generated from the unique material sections of a given FBX mesh. So when we are calling the function ImportFBXFile, we can specify a default parameterized material that
+                        are going to auto apply in the generated mesh sections, with the textures and color values set, depending on the parameterization of the input material. We also have the option to update a particular mesh section with a specific
+                        material.
+
+                    </p>
+
+                </div>
+
+                <div id="CreatingCollisions">
+
+                    <h6>Creating Collisions</h6>
+
+                    <p>
+
+                        When the FBX file is being imported via the ImportFBXFile function, it can be chosen to either have no collisions, or collisions read from the source file, via the CollisionType input parameter.
+
+                    </p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Collision Type</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>NoCollision</td>
+
+                                    <td>The currently Imported Meshes will not have any collisions applied on them.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MeshCollisionFromSource</td>
+
+                                    <td>Collision is only applied to the Procedural Mesh Components generated from the nodes having node name with prefix UCX_.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>CustomCollisionFromSource</td>
+
+                                    <td>Only Collision data is generated from the nodes having node name with prefix UCX_ , and seperate mesh is not rendered.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+
+                    <p>
+
+                        To create optimized collisions for your Procedural Mesh Components generated from the FBX Meshes, it is important to have simplified collision geometries. Of course we can have collisions derived from the imported Meshes itself, but for high poly meshes,
+                        it is going to be extremely performance heavy and not a recommended way to create collisions. So creating custom collision geometries within your 3d Modelling applications and exporting it with the render mesh is required for this
+                        plugin to create collision data for the generated Procedural Mesh Components.
+
+                    </p>
+
+                    <p>
+
+                        Collision meshes are identified by this plugin based on their names. The collision naming syntax should be UCX_[RenderMeshName].
+
+                    </p>
+
+                    <p>
+
+                        While importing, if you choose to have collision type as MeshCollisionFromSource, it means the geometries matching the naming pattern UCX_[RenderMeshName] will be imported as both render mesh and collision data. But choosing the collision type as CustomCollisionFromSource
+                        would rather implies that the geometries matching the naming pattern UCX_[RenderMeshName] will be imported as collision data only, and will not be rendered seperately.
+
+                    </p>
+
+                    <img src="images/assetimport/customcollision.jpg">
+
+                </div>
+
+                <div id="ImportNotificationEvents">
+
+                    <h6>Import Notification Events</h6>
+
+                    <p>
+
+                        Once the import process of a given FBX file is started, few events notifying the Import Manager of the import progress get triggered. These events need to be defined in the Import Manager Blueprint, and can be used to display custom notifications on screen,
+                        or perform other tasks, for example, displaying a dynamic Loading screen which disappears after all the FBX meshes are completely imported and corresponding mesh components have been generated in the current level.
+
+                    </p>
+
+                    <p>
+
+                        The event <strong>On New FBX Import Started</strong> is fired when a new FBX Import process has started.
+
+                    </p>
+
+                    <img src="images/assetimport/newfbximportstarted.jpg">
+
+                    <p>
+
+                        The event <strong>On FBX Node Progress Changed</strong> is fired when a new FBX Node has been Imported, with each individual sections of the Node has been generated into Procedural Mesh Components.
+
+                    </p>
+
+                    <img src="images/assetimport/fbxnodeprogresschanged.jpg">
+
+                    <p>
+
+                        The event <strong>On FBX Section Progress Changed</strong> is fired when a new FBX Section is imported and generated into a Procedural Mesh Component.
+
+                    </p>
+
+                    <img src="images/assetimport/fbxsectionprogresschanged.jpg">
+
+                    <p>
+
+                        The event <strong>On Import Completed</strong> is fired when athe current FBX Import process is completed. This returns an actor of the type FBXMeshActor, which can be stored in a variable for later use.
+
+                    </p>
+
+                    <img src="images/assetimport/onimportcompleted.jpg">
+
+                    <p>
+
+                        These events can be very useful to display custom Notifications via UMG Widgets.
+
+                    </p>
+
+                    <img src="images/assetimport/importnotification.jpg">
+
+                </div>
+
+
+
+            </div>
+
+
+            <div id="UsingParameterizedMaterials">
+
+                <h5>Using Parameterized Materials</h5>
+
+                <p>
+
+                    To read the textures from the imported FBX file and apply at respective sections of the Procedural Mesh Component, it is important to create parameterized materials, following a specific naming convention for the paramters, so that while the respective
+                    FBX section is converted into a Procedural Mesh Component, a dynamic material is created and corresponding textures can be set in the property values that match the given naming convention.
+
+                </p>
+
+
+
+                <p>
+
+                    The example Base Material can be found inside content directory of the <strong>Runtimefbximport</strong> Plugin and it can act as a parent material for the instances created during each section of the imported mesh.
+
+                </p>
+                <img src="images/assetimport/basematerialexample.jpg">
+
+                <ol>
+                    <li>BaseTexture - The Base or Diffuse Texture of the material</li>
+                    <li>EmissiveTexture - Represents Emissive Texture of the material, if any</li>
+                    <li>SpecularTexture - Represents Specular Texture of the material, if any</li>
+                    <li>NormalTexture - The Normal Texture of the material</li>
+                    <li>OpacityTexture - Opacity of the material, representing mask or transculency, depending on how the material is setup in Unreal</li>
+                </ol>
+
+
+            </div>
+
+            <div id="LoadingAndSaving">
+
+                <h5>Loading And Saving</h5>
+
+                <p>
+
+                    Once the FBX Actor is imported and placed in your level, you might want to save the Actor, so that next time you want to load the scene, you dont have to go through the import process all over again for the same actor, and you can just load the actor
+                    from your savegame file.
+
+                </p>
+
+                <div id="SavingFBXActor">
+                    <h6>Saving FBX Actor</h6>
+                    <p>
+                        To save a given FBX Actor, you can get its reference and call the function <strong>FBXSaveGame</strong>, and pass the filename along with extension, that you want to save your FBX in.
+                    </p>
+                    <img src="images/assetimport/savefbxactor.jpg">
+                </div>
+                <div id="LoadingFBXActor">
+
+                    <h6>Loading FBX Actor</h6>
+                    <p>
+                        To load a saved FBX Actor, you first need to get instances of your SaveGame Object, that would be recreating from the saved files you had create before.
+                    </p>
+                    <p>
+                        SaveGame Object instances can be obtained by calling the function <strong>GetAllFBXSavedFiles</strong>. This takes the directory path to look for the FBX files saved previously, and return all instances retrieved inside given directory,
+                        filtered by extension.
+                    </p>
+                    <p>
+                        Once we have out SaveGame Instances, we need to get the instance of our <strong>fbximportManager</strong> Actor class placed in the level, call the function <strong>LoadFBXfromSaveGameObject</strong> , where we pass the SaveGame
+                        Object instance for our saved FBX object, which we want to load currently.
+                    </p>
+                    <img src="images/assetimport/loadfbxactor.jpg">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/smoothscroll.js"></script>
+    <script src="scripts/documentation.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+
+
+</body>
+
+</html>

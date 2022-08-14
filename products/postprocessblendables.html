@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Post Process Blendables Volume 1</title>
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+
+    <link href="content/site.css" rel="stylesheet" />
+
+    <link href="content/loader.css" rel="stylesheet" />
+
+    <link href="content/mainpage.css" rel="stylesheet">
+
+    <link href="content/productpage.css" rel="stylesheet">
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/header.html" : "https://athiangames.com/header"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/footer.html" : "https://athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+</head>
+
+<body>
+
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+        <div id="HeaderNavDiv"></div>
+
+        <div class="ImageWrapper">
+
+            <img src="images/assetimport/fbximportcover.png">
+
+            <div class="OverlayText ProductTitle overlaybaner-top">
+
+                <h1>Post Process Blendables - Volume 1</h1>
+
+                <p>
+
+                    Post Process Blendables Volume 1 is a pack of 44 post process materials to give a variety of effects in your game..
+
+                </p>
+
+                <button type="button" onclick="window.open('https://www.unrealengine.com/marketplace/en-US/product/post-process-blendables-volume')">
+
+                    Get It Here
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <template id="ShaderDetails">
+
+            <div class="ShaderDetailsColumn">
+
+                <img class="ImageCard" id="thumbnailImage">
+
+                <div class="ImageCardOverlay">
+
+                    <span class="title"></span>
+
+                    <p class="content"></p>
+
+                </div>
+
+
+
+            </div>
+
+        </template>
+
+
+        <div class="first-frame-box">
+            <div class="container">
+                <div class="SectionDiv">
+
+                    <div class="SectionDivCover">
+
+                        <img src="images/postprocessblendables/blendablescover.png" />
+
+                    </div>
+
+
+
+                    <div class="SectionContent">
+
+                        <h1>OVERVIEW</h1>
+
+                        <h2>
+
+                            Post Process Materials allow you to blend your existing Post process with shaders to create some interesting visual screen effects, like Blur, Night Vision, HDR, and many more. This pack comes with a set of 44 Materials with customizable parameters that
+                            allow you to give unique look to your Scene. You can blend multiple Post process material instances and set the parameters, to enhance the flexiblity of the outcome that matches your requirement.
+
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="FeaturedVideoDiv video-featured">
+
+            <a id="FeaturedVideoThumb" href="#">
+
+                <img width="1200" src="images/postprocessblendables/blendablescover.png" />
+
+            </a>
+
+            <video id="FeaturedVideo" style="display:none" width="1200">
+
+                    <source id="mp4" src="videos/blendables.mp4" type="video/mp4">
+
+                </video>
+
+
+
+        </div>
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+
+    </div>
+
+    <script src="scripts/producttemplate.js"></script>
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+</body>
+
+</html>

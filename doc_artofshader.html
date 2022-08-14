@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script>
+        var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+
+        var base = document.createElement('base');
+        var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+    <link href="content/site.css" rel="stylesheet" />
+    <link href="content/loader.css" rel="stylesheet" />
+    <link href="content/sidenav.css" rel="stylesheet">
+    <link href="content/documentation.css" rel="stylesheet">
+    <link href="content/mainpage.css" rel="stylesheet">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>Art of Shader | Documentation</title>
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/docheader.html" : "https://docs.athiangames.com/docheader"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/footer.html" : "https://docs.athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+</head>
+
+
+
+<body id="page-top">
+
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+        <div id="HeaderNavDiv"></div>
+
+
+        <div class="sidenav" id="SideNavigationDiv">
+
+            <ul>
+
+                <li class="dropdown-btn"><a href="#Introduction">Introduction</a></li>
+
+                <li class="content">
+                    <a href="#Blendables">What are Blendables?</a>
+                    <a href="#Localization">Localization</a>
+                    <a href="#TypesOfShaders">Types Of Shaders</a>
+                </li>
+
+                <li class="dropdown-btn"><a href="#GettingStarted">Getting Started</a></li>
+
+                <li class="content">
+                    <a href="#TutorialBlueprints">The Tutorial Blueprints</a>
+                    <a href="#AOSActor">The AOS Actor</a>
+                    <a href="#AOSRuntimeActor">The AOS Runtime Actor</a>
+                    <a href="#AOSRuntimeManager">The AOS Runtime Manager</a>
+                    <a href="#AOSUDRuntimeActor">The AOS User-Defined Runtime Actor</a>
+                </li>
+
+                <li class="dropdown-btn"><a href="#WorkingWithLocalization">Working With Localization</a></li>
+
+                <li class="content">
+                    <a href="#ObjectSpaceLocalization">Object Space Localization</a>
+                    <a href="#ScreenSpaceLocalization">Screen Space Localization</a>
+                </li>
+
+
+            </ul>
+
+        </div>
+
+
+
+        <div class="DocContainer">
+
+            <h1>Art of Shader Documentation</h1>
+            <p>
+                Although the Post Process Blendable Materials and their corresponding instances coming with every Art of Shader pack can be used in a Post Process Volume seperately placed in your level, there are Blueprint Actors specifically created to make several
+                steps easy and more user friendly. This documentation is going to walk you through how to use the Blueprint Actors in your level and get the most out of the AOS Packs.
+            </p>
+
+            <div id="Introduction">
+                <h5>Introduction</h5>
+                <p>
+                    Before getting started implmeneting post processing in our environment, it is important to get ourselves acquainted with some of the basic concepts behind post processing as well as terminologies which form integral part in the AOS Series.
+                </p>
+                <div id="Blendables">
+                    <h6>What are Blendables?</h6>
+                    <p>
+                        Blendables are Post Process materials that add custom Post Process Effect to your overall scene. Blendables are usually added in a Post Process Volume Actor, in the PostProcessMaterials array. Multiple Blendables can be added and given different weightage
+                        between 0 and 1 to combine their effects accordingly.
+                    </p>
+                    <p>
+                        More information on Blendables can be found in the below link :
+                    </p>
+                    <a style="padding:10px" target="_blank" href="https://docs.unrealengine.com/en-US/Engine/Rendering/PostProcessEffects/Blendables/index.html">https://docs.unrealengine.com/en-US/Engine/Rendering/PostProcessEffects/Blendables/index.html</a>
+
+                </div>
+
+                <div id="Localization">
+                    <h6>Localization</h6>
+                    <p>
+                        Localization is a technique of adding Post Process Materials in the level, so that it affects only part of the level, and not the entire scene. For example, you have a CelShaded Material, and you do not want the entire scene to have the effect, when you
+                        apply the same in your level, but rather a few objects, or a part of the screen. For this, you need to use Localization. In my shader packs, I have used two types of Localization, <strong>Object Space Localization</strong>,
+                        using Custom Depth Stencil, and <strong>Screen Space Localization</strong>, using displaced UVs.
+                    </p>
+                </div>
+                <div id="TypesOfShaders">
+                    <h6>Types of Shaders</h6>
+                    <p>
+                        The Shaders can be differentiated into three types, based on the type of environment it affects.
+                    </p>
+                    <ul>
+                        <li>
+                            <p>
+                                The <strong>MainShaders</strong> affect objects at a navigable distance, i.e not very far away from you.
+                            </p>
+
+                        </li>
+                        <li>
+                            <p>
+                                The <strong>BackgroundShaders</strong> affect background objects, like Sky and Atmosphere.
+                            </p>
+
+                        </li>
+                        <li>
+                            <p>
+                                The <strong>CommonShaders</strong> affect the entire scene.
+                            </p>
+
+                        </li>
+                    </ul>
+                    <video width="1100" src="videos/artofshader/typesofshader.m4v" type="video/m4v" autoplay loop playsinline style="pointer-events: none;">
+                </div>
+
+
+            </div>
+
+
+            <div id="GettingStarted">
+                <h5>Getting Started</h5>
+                <p>
+                    Each Art of Shader Pack will come with a few Blueprint Actors, Widget Blueprints for Runtime Controls including a ColorPicker, few textures and a bunch of Post Process Blendable Materials, their corresponding Material Instances, and relevant Material
+                    functions used by those Materials. The Common files like the Blueprints, the WidgetBlueprints, Assets for Demonstration, etc, will have the same folder names across all the AOS packs, making it easy to integrate and merge multiple
+                    packs in same project. But the Blendable Materials and Instances specific to the given pack will have their own folder, like Stylized Post Process Materials will be present inside the folder called <strong>StylizedPostProcess</strong>.
+
+
+                </p>
+
+                <img src="images/artofshader/folderstructure.jpg" style="width:20%;">
+
+                <div id="TutorialBlueprints">
+                    <h6>The Tutorial Blueprints</h6>
+                    <p>
+                        Tutorial Blueprints will walk you through the various classes, variables and functionalities, with detailed description and usefulness of each and every property that you need to know about. The Tutorial Blueprints will be found inside the <strong>Tutorials</strong> folder.
+                    </p>
+                    <video width="1100" src="videos/artofshader/tutorialbps.m4v" type="video/m4v" autoplay loop playsinline style="pointer-events: none;">
+                   
+               </div>
+
+                <div id="AOSActor">
+                    <h6>The AOS Actor</h6>
+                    <p>
+                        The AOS Actor, named as <strong>BP_ArtOfShader</strong>, is an Actor Blueprint, found inside the Blueprints folder, which seperates out the <strong>MainShaders</strong>, <strong>BackgroundShaders</strong> and the <strong>CommonShaders</strong>.
+                        These properties are exposed and can be set in your BP instance. These will let you group the materials based on the set of common properties you choose, like Localization and Blending.
+                    </p>
+                    <div class="FunctionsTable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Properties</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MainShaders</td>
+                                    <td>Array of properties derived from the structure called <strong>UDS_PostProcessMainShader</strong>, and is responsible for applying <a href="#TypesOfShaders">MainShaders</a> to the current scene.</td>
+                                </tr>
+                                <tr>
+                                    <td>BackgroundShaders</td>
+                                    <td>Array of properties derived from the structure called <strong>UDS_PostProcessCommonShader</strong>, and is responsible for applying <a href="#TypesOfShaders">BackgroundShaders</a> to the current scene.</td>
+                                </tr>
+                                <tr>
+                                    <td>CommonShaders</td>
+                                    <td>Array of properties derived from the structure called <strong>UDS_PostProcessMainShader</strong>, and is responsible for applying <a href="#TypesOfShaders">CommonShaders</a> to the current scene.</td>
+                                </tr>
+                                <tr>
+                                    <td>IsUnBound</td>
+                                    <td>True if the Post Process Volume being applied through the AOS Actor is infinitely extent(UnBound), false if it is bound to the area covered by the given volume.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        Every array element specific to <strong>MainShaders</strong> and <strong>CommonShaders</strong> are derived from a structure called <strong>UDS_PostProcessMainShader</strong>, and each of these element represent a single group of Post Process Materials that can be blended together via a set of common parameters.
+                    </p>
+                    <div class="FunctionsTable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Properties</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Materials</td>
+                                    <td>Array of Post Process Blendables Material Instances.</td>
+                                </tr>
+                                <tr>
+                                    <td>Blend</td>
+                                    <td>An amount between 0 to 1, and defines how much every Instances defined in the <strong>Materials</strong> array should blend.</td>
+                                </tr>
+                                <tr>
+                                    <td>Localized</td>
+                                    <td>Set to true if the current group of Post Process Materials should have their localization enabled. If enabled, the Materials will not affect the entire scene and the effect will be determined by the localization parameters set. The shader will be applied to only those objects in the scene for which the stencil index falls within the <strong>StencilMinIndex</strong> and <strong>StencilMaxIndex</strong> parameters.</td>
+                                </tr>
+                                <tr>
+                                    <td>Exclude Stencil</td>
+                                    <td>For <strong>Object Space Localization</strong>, when <strong>ExcludeStencil</strong> is checked, the localization effect is reversed, i.e, it is applied to the rest of the scene whose sencil value falls within the <strong>StencilMinIndex</strong> and <strong>StencilMaxIndex</strong> parameters.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>StencilMinIndex</td>
+                                    <td>An Integer value between 0 and 255, which represent the minimum stencil index for the range of Stencil values for which the localization should take place, when <strong>Localized</strong> variable is checked.</td>
+                                </tr>
+                                <tr>
+                                    <td>StencilMaxIndex</td>
+                                    <td>An Integer value between 0 and 255, which represent the maximum stencil index for the range of Stencil values for which the localization should take place, when <strong>Localized</strong> variable is checked.</td>
+                                </tr>
+                                <tr>
+                                    <td>Split Screen Params</td>
+                                    <td>A variable defined by the structure <string>UDS_SplitScreen</string> which is used for screen space localization.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>
+                        <strong>BP_ArtOfShader</strong> is what you are going to need the most to develop the Post Process Effects for your own environment.
+                    </p>
+
+                    <p>
+                        To get started with, place an instance of <strong>BP_ArtOfShader</strong> in your level.
+                    </p>
+
+                    <p>
+                        To populate your main environment, create an element in the <strong>MainShaders</strong> array in the instance of the <strong>BP_ArtOfShader</strong> you placed in your level. This element will represent a single group of Post Process Materials having common Localization and Blending properties.
+                    </p>
+                    <p>
+                       In the <strong>Materials</strong> array, create an array element, and assign a Post Process Material instance from the corresponding folder, i.e., if you have purchased the Stylized Post Process Pack, then the Material Instances will be found at <strong>StylizedPostProcesses/MaterialInstances</strong>.  
+                    </p>
+                    <img style="padding-left:20px;" src="images/artofshader/ppmaterialbrowser.jpg">
+                    <p>
+                        Now you can see that the corresponding Post Process Material has been applied on your main environment. You can add more elements in the <strong>Materials</strong> array to combine multiple Blendables together, although not all of them will look equally good when combined with one another, so a lot of factors will come into play, and we will learn more about them as we progress.
+                     </p>
+                     <p>
+                        You can change the <strong>Blend</strong> value from 0 to 1, where 0 being no effect of the material(s) in the scene, while 1 means full effect. Blend happens through linear interpolation, and is different than the weight blended system present in the Post Process Volume Actor. 
+                     </p>
+                    <div class="wrapper">
+                        <video class="video" controls loop>
+                            <source src="videos/artofshader/gettingstarted_01.mp4" preload="none" type="video/mp4"/>
+                        </video>
+                    <div class="playpause"></div>
+                </div>
+                <p>
+                    To populate your background environment, which mainly consists of the sky, create an element in the <strong>Background Shaders</strong> array in the instance of the <strong>BP_ArtOfShader</strong> you placed in your level. Just like
+                    how added Materials and set the blend value in the MainShaders array, you can similarly do the same and see the effect occuring in your Sky and Atmosphere instead, keeping your Main Environment as it is.
+                </p>
+                <p>
+                    Please note, for some reason unknown to me, it is not possible to have Material Instances derived from the same Material to simultaneously affect both your Main and your Background environment. So, if that is what you desire, it is advisable to duplicate
+                    the parent Material and create another instance out of it.
+                </p>
+                <div class="wrapper">
+                    <video class="video" controls loop>
+                        <source src="videos/artofshader/gettingstarted_02.mp4" preload="none" type="video/mp4"/>
+                    </video>
+                    <div class="playpause"></div>
+                </div>
+                <p>
+                    Common Shaders, that will affect the entire scene, are created similarly, by adding elements in the <strong>CommonShaders</strong> array.
+                </p>
+                <p>
+                    As you have already realized by now, you can easily combine and group and blend multiple Blendables to get the desired look of your environment.
+                </p>
+                <div id="AOSRuntimeActor">
+                    <h6>The AOS Runtime Actor</h6>
+                    <p>
+                        The AOS Runtime Actor, named as <strong>BP_AOSRuntime</strong>, is an Actor Blueprint, also found inside the Blueprints folder, which can have only one set of Post Process Materials, grouped by Common Properties. This is because
+                        <strong>BP_AOSRuntime</strong> was mainly created for demonstration of various shaders, and the instance parameters, along with properties like Localization and Blending, in runtime.
+                    </p>
+                </div>
+
+                <div id="AOSRuntimeManager">
+                    <h6>The AOS Runtime Manager</h6>
+                    <p>
+                        The AOS Runtime Manager, named as <strong>BP_AOSRuntimeManager</strong>, is an Actor Blueprint, also found inside the Blueprints folder, which gets reference of all the instances of <strong>BP_AOSRuntime</strong> placed in the
+                        level, and brings the appropriate UI settings, when a user steps inside the volume of a given <strong>BP_AOSRuntime</strong>. An example of this in action is found in the Levels found inside the <strong>Map</strong> folder.
+                    </p>
+                </div>
+
+                <div id="AOSUDRuntimeActor">
+                    <h6>The AOS User-Defined Runtime Actor</h6>
+                    <p>
+                        The AOS User-Defined Runtime Actor, named as <strong>BP_AOSUserDefinedRuntime</strong>, is an Actor Blueprint, also found inside the Blueprints folder, which needs a reference of an instance of <strong>BP_ArtOfShader</strong> placed
+                        in the level. It then reads the Post Process Materials currently applied via <strong>BP_ArtOfShader</strong>, and during runtime, we can manually control when the UI should pop up, and we can tweak the Post Proces Settings accordingly.
+                        <strong>BP_AOSUserDefinedRuntime</strong> contains detailed commented example for the same.
+                    </p>
+                    <img src="images/artofshader/userdefinedruntimebp.jpg">
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="WorkingWithLocalization">
+            <h5>Working with Localization</h5>
+
+            <p>
+                Assuming you are able to get yourself familiar with the contents of the AOS Packs, we can now look into implementing Localization in our environment.
+            </p>
+
+            <div id="ObjectSpaceLocalization">
+                <h6>Object Space Localization</h6>
+                <p>
+                    <strong>Object Space Localization (OSL)</strong> happens through Custom Depth Stencil. In this technique, it is possible to selectively apply Post Process Materials only to certain objects placed in the scene, and not the entire scene,
+                    or to exclude certain objects from the effect of a given Post Process Materials that is applied to the rest of the scene.
+                </p>
+                <p>To use OSL, first you need to Enable Stencil Depth for your project. To do this, go to Edit -> Project Settings, search for Custom Depth, and then set <strong>Custom Depth-Stencil Pass</strong> to <strong>Enabled with Stencil</strong>.
+                    Also ensure that the property <strong>Custom Depth with TemporalAA Jitter</strong> is checked.</p>
+
+                <img src="images/artofshader/enablecustomdepthstencil.jpg">
+                <p>
+                    For the objects placed in the scene that need to get affected by the given Post process materials, set <strong>Render Custom Depth Pass</strong> to true, and for the property <strong>Custom Depth Stencil Value</strong>, set a value
+                    between 0 and 255.
+                </p>
+                <img src="images/artofshader/enabledepthpass.jpg">
+                <p>
+                    When the Stencil values of the objects in the scene is set, those objects are now ready for Localization. To enable localization from your <strong>BP_ArtOfShader</strong> instance placed in the level, set the <strong>Localized</strong>                    property to true for one of the elements you created in either <strong>MainShaders</strong>, or <strong>CommonShaders</strong>. Also you need to set the StencilMinIndex and StencilMaxIndex appropriately, so that the Stencil values
+                    of the objects being affected by the given Post Process effect falls between StencilMinIndex and StencilMaxIndex. For example, if you StencilMinIndex is 250 and StencilMaxIndex is 255, all the objects in the scene having custom depth
+                    enabled and Stencil values between 250(inclusive) and 255(inclusive) will be affected when <strong>Localized</strong> is set to true, while the rest of the scene will be as it is.
+                </p>
+                <p>
+                    To reverse the effect of Object Space Localization, set <strong>ExcludeStencil</strong> parameter to true. This will disable the post process effect from the objects whose Stencil Values fall between StencilMinIndex and StencilMaxIndex,
+                    while enabling the effect for the rest of the scene, depending on if the current change is made to <strong>MainShaders</strong>, or <strong>CommonShaders</strong>
+                </p>
+                <div class="wrapper">
+                    <video class="video" controls loop>
+                        <source src="videos/artofshader/gettingstarted_03.mp4" preload="none" type="video/mp4"/>
+                    </video>
+                    <div class="playpause"></div>
+                </div>
+            </div>
+
+            <div id="ScreenSpaceLocalization">
+                <h6>Screen Space Localization</h6>
+                <p>
+                    <strong>Screen Space Localization(SSL)</strong> applies Post Process effect to only part of the screen, and not the entire screen. This is done by selectively choosing certain UVs and neglecting others via various conditional statements.
+                </p>
+                <p>
+                    SSL can be divided into Simple SSL and Advanced SSL. Simple SSL can be activated directly from the <strong>BP_ArtOfShader</strong> instance placed in the level, from the <strong>SplitScreenParams</strong> structure variable that you
+                    find at each element in the <strong>MainShaders</strong>, <strong>BackgroundShaders</strong> or <strong>CommonShaders</strong>.
+                </p>
+                <div class="FunctionsTable">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Properties</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SplitScreen</td>
+                                <td>Setting this to true will enable the Screen Spacle Localization.</td>
+                            </tr>
+                            <tr>
+                                <td>SplitRatio</td>
+                                <td>Overall Ratio of the Screen Split.</td>
+                            </tr>
+                            <tr>
+                                <td>SplitX</td>
+                                <td>Ratio of the Screen Split in the X Direction.</td>
+                            </tr>
+                            <tr>
+                                <td>SplitY</td>
+                                <td>Ratio of the Screen Split in the Y Direction.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="wrapper">
+                    <video class="video" controls loop>
+                        <source src="videos/artofshader/gettingstarted_04.mp4" preload="none" type="video/mp4"/>
+                    </video>
+                    <div class="playpause"></div>
+                </div>
+                <p>
+                    Advanced SSL is a technique of splitting the screen via Polygonal Shape, which can be Rectangles, Circle, or an N-Side Polygon with some customization options to create some interesting shapes. Advanced SSL is not exposed to AOS Actor, but can be created
+                    on top of the existing functionalities, by visiting the respective Material Instance Editor, and modifying the corresponding parameters.
+                </p>
+
+                <p>
+                    When the <strong>PolygonSplit</strong> parameter is enabled, you will see the parameters respective to changing the shape , size and position of the polygon as required.
+                </p>
+                <img src="images/artofshader/splitpolygon.jpg" style="width: 60%;">
+                <p>
+                    When the <strong>PolygonSplit</strong> parameter is disabled, you will see the parameters respective to changing the shape, size and position of either a Rectangle, or a Circle. The transformation from Rectangle to Circle is determined
+                    by the float parameter <strong>CircleAlpha</strong>.
+                </p>
+                <img src="images/artofshader/splitcircleandrectangle.jpg" style="width: 60%;">
+            </div>
+            <div class="wrapper">
+                <video class="video" controls loop>
+                    <source src="videos/artofshader/gettingstarted_05.mp4" preload="none" type="video/mp4"/>
+                </video>
+                <div class="playpause"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="Footer" id="FooterDiv">
+    </div>
+
+    </div>
+
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/smoothscroll.js"></script>
+    <script src="scripts/documentation.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+
+</body>
+
+</html>

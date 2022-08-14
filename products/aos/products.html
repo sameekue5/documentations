@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sixteen Products</title>
+
+    <link href="content/loader.css" rel="stylesheet" />
+    <link href="content/templatemo-sixteen.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/header.html" : "https://athiangames.com/header"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/footer.html" : "https://athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+</head>
+
+<body id="page-top">
+
+    <div class="products1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="pages1">
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+    <script src="scripts/artofshader/stylizedpostprocess.js"></script>
+
+
+</body>
+
+</html>

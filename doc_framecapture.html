@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script>
+        var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+
+        var base = document.createElement('base');
+        var servername = islocal ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+    <link href="content/site.css" rel="stylesheet" />
+    <link href="content/loader.css" rel="stylesheet" />
+    <link href="content/sidenav.css" rel="stylesheet">
+    <link href="content/documentation.css" rel="stylesheet">
+    <link href="content/mainpage.css" rel="stylesheet">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>framecapture | Documentation</title>
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/docheader.html" : "https://docs.athiangames.com/docheader"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/footer.html" : "https://docs.athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+
+</head>
+
+
+
+<body id="page-top">
+    <div class="ld ld-breath ld.reverse" id="loader">
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+        <div id="HeaderNavDiv"></div>
+        <div class="sidenav" id="SideNavigationDiv">
+            <ul>
+                <li class="dropdown-btn"><a href="#GettingStarted">Getting Started</a></li>
+                <li class="content">
+
+                    <a href="#TheViewportCLient">The ViewportClient</a>
+
+                    <a href="#ThePluginStructure">The Plugin Structure</a>
+
+                    <a href='#CharacterBlueprint'>The Character Blueprint</a>
+
+                    <a href='#PhotoModeWidget'>The PhotoMode Widget</a>
+
+                    <a href='#VideoModeWidget'>The VideoMode Widget</a>
+
+                </li>
+                <li class="dropdown-btn"><a href="#AdjustingDepthOfField">Adjusting Depth Of Field</a></li>
+                <li class="content">
+
+                    <a href="#AddCameraProperties">Adding Camera Properties</a>
+
+                    <a href="#SettingCameraProperties">Setting Camera Properties</a>
+
+                </li>
+                <li class="dropdown-btn"><a href="#TakingScreenshots">Taking Screenshots</a></li>
+                <li class="content">
+                    <a href="#TakingNormalScreenshot">Taking Normal Screenshot</a>
+                    <a href="#SavingAsTexture">Saving Screenshot As Texture</a>
+                    <a href="#TakingAsOpenCV">Taking ScreenShot USing OpenCV</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="DocContainer">
+            <h1>framecapture Documentation</h1>
+            <p>
+                Although the base functionalities are written in C++ , to help you get started using this plugin, I have set up in depth example in Blueprints that is going to help you understand how this system is working, and how to implement this in your project.
+            </p>
+
+            <div id="GettingStarted">
+                <h5>Getting Started</h5>
+                <p>
+                    First ensure that the plugin is installed and enabled by navigating to your plugin window from Edit -> Plugins and verifying if the framecapture plugin is enabled.
+                </p>
+
+                <img src="images/framecapture/PluginWindow.png">
+
+                <div id="TheViewportCLient">
+                    <h6>The ViewportClient</h6>
+                    <p>
+                        You might be familiar with editor command that helps you take high res screenshot of your game at any point of time. To implement similar but customized feature, I had to create a seperate Viewport Client that is inherited from <strong>GameViewportClient</strong>.
+                        My class is called <strong>framecaptureViewportClient</strong>. So before you start implementing my plugin in your project, you need to add my viewport client class as your game viewport client.
+                    </p>
+                    <p>
+                        Go to Edit -> Project Settings, and navigate to Engine -> General Settings. Then update your Game Viewport Client Class with <strong>framecaptureViewportClient</strong>. You might have to restart the editor for your changes to
+                        take effect.
+                    </p>
+                    <img src="images/framecapture/ViewportClient.png">
+                </div>
+                <div id="ThePluginStructure">
+                    <h6>The Plugin Structure</h6>
+                    <p>
+                        The Plugin Content directory contains example blueprints and widgets which is very useful as a starting point to understand the functinalities of the plugin as well as to test out the core features.
+                    </p>
+                    <p>
+                        To view the Plugin Content directory, you need to click on the eye icon at the bottom right of the Content Browser, and enable <strong>Show Engine Content</strong>.
+                    </p>
+                    <img src="images/EngineContentDirectory.png">
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/smoothscroll.js"></script>
+    <script src="scripts/documentation.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+
+    <meta name="author" content="">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+    <!-- Custom styles for this template -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+    <title>Minimap And Map | Documentation</title>
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/docheader.html" : "https://docs.athiangames.com/docheader"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/footer.html" : "https://docs.athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+    <link href="content/site.css" rel="stylesheet" />
+    <link href="content/loader.css" rel="stylesheet" />
+    <link href="content/sidenav.css" rel="stylesheet">
+    <link href="content/documentation.css" rel="stylesheet">
+    <link href="content/mainpage.css" rel="stylesheet">
+
+</head>
+
+
+
+<body id="page-top">
+
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+
+        <div id="HeaderNavDiv"></div>
+
+        <div class="sidenav" id="SideNavigationDiv">
+
+            <ul>
+
+                <li class="dropdown-btn"><a href="#PluginStructure">The Plugin Structure</a></li>
+
+                <li class="content">
+
+                    <a href="#MapBoundsActor">The MapBounds Actor</a>
+
+                    <a href='#MapManager'><span>MapManager</span></a>
+
+                    <a href='#POIElement'><span>POIElement DataTable</span></a>
+
+                    <a href='#MinimapWidget'><span>MinimapWidget</span></a>
+
+                    <a href='#MinimapElementWidget'><span>MinimapElementWidget</span></a>
+
+                    <a href='#MapWidget'><span>MapWidget</span></a>
+
+                    <a href='#MapElementWidget'><span>MapElementWidget</span></a>
+
+                    <a href='#NavigationWidgets'><span>NavigationWidgets</span></a>
+
+                </li>
+
+                <li class="dropdown-btn"><a href="#QuickStart">Quick Start</a></li>
+
+                <li class="content">
+
+                    <a href='#QSMapBoundsActor'><span>The MapBoundsActors</span></a>
+
+                    <a href='#QSMapManager'><span>The MapManager</span></a>
+
+                    <a href='#QSPOIElement'><span>Adding Points of Interest</span></a>
+
+                    <a href='#QSMinimap'><span>The Minimap</span></a>
+
+                    <a href='#QSMinimapElement'><span>The Minimap Element</span></a>
+
+                    <a href='#QSMap'><span>The Map</span></a>
+
+                    <a href='#QSMapElement'><span>The Map Element</span></a>
+
+                    <a href='#QSNavigation'><span>The Navigation</span></a>
+
+                    <a href='#QSNavigationActor'><span>The Navigation Actor</span></a>
+
+                </li>
+
+                <li class="dropdown-btn"><a href="#ImportantFeatures">Important Features</a></li>
+
+                <li class="content">
+
+                    <a href='#minimapactorComponent'><span>Minimap Actor Component</span></a>
+
+                    <a href='#MinimapMasking'><span>Minimap Masking</span></a>
+
+                    <a href='#CircularMinimap'><span>Circular Minimap</span></a>
+
+                    <a href='#NavExitActors'><span>Navigation Exit Actors</span></a>
+
+                    <a href='#CentricalPlayerPos'><span>Centrical and Acentric Player Position</span></a>
+
+                </li>
+
+                <li class="dropdown-btn"><a href="#RuntimeActions">Runtime Actions</a>
+
+                    <li class="content">
+
+                        <a href='#AddingPOIRuntime'><span>Adding runtime POI Actor</span></a>
+
+                    </li>
+
+            </ul>
+
+        </div>
+
+        <div class="DocContainer">
+
+            <h1>Minimap, Map and Navigation System Documentation</h1>
+
+            <?php include 'Header.php';?>
+
+
+
+            <p>
+
+                This documentation lets you quickly get started with integrating this plugin to your projects and implement your own Minimap and Map in no time.
+
+
+
+            </p>
+
+
+
+            <div id="PluginStructure">
+
+                <h5>The Plugin Structure</h5>
+
+                <p>
+
+                    Once you have installed the plugin from the launcher, either create a new project, or download the example project to test out. Ensure that the plugin is enabled by visiting the plugin window and browsing over to the IMapsAndNavigation plugin.
+
+                </p>
+
+                <img src="images/imaps/PluginWindow.png">
+
+                <p>
+
+                    The plugin comprises of various UserWidget classes, the example widgets demonstrating how to use them, and several actor classes which highlight the implementation of the system in a scene. It also contains the necessary materials and textures that we
+                    would need for the demonstration. We now will look into how the contents of the plugin are defined and various functionalities of each class.
+
+                </p>
+
+                <p>
+
+                    When you download the plugin from the Launcher, this is installed as an Engine plugin, so in order to view its contents you need to enable Show Engine Content from the View Options.
+
+                </p>
+
+                <img src="images/imaps/PluginStructure.png">
+
+                <p>
+
+                    In this section, we will learn a brief overview of various classes included in the plugin, and their functionalities.
+
+                </p>
+
+                <div id="MapBoundsActor">
+
+                    <h6>The MapBounds Actor</h6>
+
+                    <img src="images/imaps/MapBoundsActor.png">
+
+                    <p>
+
+                        Instances of MapBoundsActor class form the integral part of this plugin, as they define the Bound Area for both the Minimap and Map. Within the Blueprints folder, you will find a derived Blueprint chiild of the MapBoundsActor called BP_mapBoundsActor
+                        which you can use to define the Map Bounds for your game. You need to place at least one of the instances in your scene. Each MapBoundsActor represents Bounds area corresponding to a given Minimap Texture. So having more than one
+                        MapBoundsActor in a scene indicates switching between multiple Minimaps depending on position of the player. This is very useful for large or open world scenes, where you often need to switch your Minimap while moving inside a
+                        different Bounds, like a cave, or a house interior.
+
+                    </p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Property Name</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Level Bounds X</td>
+
+                                    <td>Adjust the length of the Bounds.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Level Bounds Y</td>
+
+                                    <td>Adjust the width of the Bounds.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Level Bounds Z</td>
+
+                                    <td>Adjust the height of the Bounds.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Minimap Texture</td>
+
+                                    <td>Texture representing the Minimap for the corresponding MapBounds Actor.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Minimap Mask Texture</td>
+
+                                    <td>Opacity Mask Texture for non rectangular Bounds.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Local Map</td>
+
+                                    <td>If the given Bounds represent a Local map, it will have its own Local Map texture to be displayed in the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Local Map Texture</td>
+
+                                    <td>The texture to display as Map for the given Bounds, provided we show a seperate Local Map in our Map widget for this Bounds actor.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Allow Switching To WorldMap</td>
+
+                                    <td>This boolean variable can be optionally used to conditioally enable or disable switching between local and world map, in the given Bounds.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>The MapBoundsActor class is used to define the Bounds of the Map and the Minimap.</li>
+
+                        <li>At least one MapBoundsActor has to be placed in a scene.</li>
+
+                        <li>Multiple MapBoundsActors in a scene allow transition between different Minimap textures for different regions and can be useful for defining world map and local maps.</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="MapManager">
+
+                    <h6>The MapManager</h6>
+
+                    <img src="images/imaps/MapManager.png">
+
+                    <p>
+
+                        Once we place our MapBoundsActors and define the bounds area and the other parameters, we are going to need an instance of MapManager Actor in our scene. This manages the entire system, displaying the minimap and the points of interest, transitioning
+                        between the multiple BoundsActors, displaying the map and handling the input, displaying waypoints for destination markers. This comes with few tweakable parameters, and every level intending to use the Minimap system should contain
+                        one MapManager.
+
+                    </p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Property Name</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Minimap Widget Class</td>
+
+                                    <td>Represents the UMG Instance of the Minimap Widget that will be used to visually represent the Minimap for our game.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Minimap Element Widget Class</td>
+
+                                    <td>Represents the UMG Instance of the POI Element Widget for the Minimap that will be used to visually represent the POI Actors present in the given scene, if those actors are supposed to be displayed in the MiniMap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Minimap Nav Widget Class</td>
+
+                                    <td>Represents the UMG Instance of the Navigion markers currently present in the scene, that are displayed in the Minimap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>POIElementTable</td>
+
+                                    <td>The Datatable containing all the POIElement classes, which is used to display POI elements with unique set of properties, corresponding to the POI Actors of a given class.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Map Widget Class</td>
+
+                                    <td>Represents the UMG Instance of the Map Widget that will be used to visually represent the Map for our game.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Map Element Widget Class</td>
+
+                                    <td>Represents the UMG Instance of the POI Element Widget for the Map that will be used to visually represent the POI Actors present in the given scene, if those actors are supposed to be displayed in the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>World Map Bounds Actor</td>
+
+                                    <td>The MapBoundsActor representing the overall bound for the world map, used to calculate Bounds for our Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>World Map Texture</td>
+
+                                    <td>The texture representing the World Map, and will be used by our Map Widget.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Navigation Widget Container Class</td>
+
+                                    <td>Represents the UMG Instance of the Widget that will contain all the Navigation Widgets, each of which would visually represent the Navigation markers in the world location.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Use Fixed Zoom</td>
+
+                                    <td>
+
+                                        This define whether the Zoom Level of the Minimap will be fixed, that is, it will not be relevant with the overall area of the current Bounds and rather the Zoom will be autocalculated based on a given zoom area. If we do not use Fixed Zoom, we need to
+                                        define Zoom in our Minimap Material Instance.
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Fixed Zoom Area</td>
+
+                                    <td>If we use Fixed zoom, this variable would represent the Zoom area for the Minimap.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>MapManager handles all the funcionalities relevant to this plugin, including calculation of the current Bounds and displaying relevant Minimap, Map and Navigation Widgets</li>
+
+                        <li>Only one MapManager should be placed in a scene</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="POIElement">
+
+                    <h6>The POIElement DataTable</h6>
+
+                    <img src="images/imaps/POIElementTable.png">
+
+                    <p>
+
+                        The actors which are displayed as Icons in Minimap as well as Map, also known as the Points of Interest(POI), are defined in a Datatable, derived from the structure <strong>POIElement</strong>. Each row in our POIElement table
+                        represents a specific Actor class that we want to highlight in our Minimap or Map or both. The POIActors can either be static or dynamic, and is not limited to what it can represent. It can be a pickup item, an NPC, enemies, or
+                        simply a Fast Travel system, the applications are infinite. Each POIActor entry in the POIElement table has its own sets of properties that increase further customizations.
+
+                    </p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Property Name</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Element Class</td>
+
+                                    <td>Class of the Actor corresponding to the given Point of Interest Element.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Display In Map</td>
+
+                                    <td>If the given POI Element type should be displayed in Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Display In MiniMap</td>
+
+                                    <td>If the given POI Element type should be displayed in Minimap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Manual Display</td>
+
+                                    <td>If set to true, the given POI Element type will not be displayed by default.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Allow Rotation Change</td>
+
+                                    <td>If the POI Element texture should rotate with the rotation of the corresponding actor.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Element Icon</td>
+
+                                    <td>Texture representing the corresponding POI Element type displayed in the Minimap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Element PointerIcon</td>
+
+                                    <td>Texture representing the out of bounds pointer for the corresponding POI Element type displayed in the Minimap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - IsStatic</td>
+
+                                    <td>
+
+                                        If the given Element type represents static or dynamic Actor. Static Actors are specific to a MapBounds Actor it was initially inside, and the Dynamic Actors can move within any MapBounds actor at a given point of time and their POI positions within the
+                                        Minimap will be updated at realtime depending on the MapBounds Actor it is currently in.
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Fixed Rotation</td>
+
+                                    <td>If the Rotation of the POI Element is fixed even if the Minimap is set to Rotate with player rotation.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Allow Pointer Rotation Change</td>
+
+                                    <td>If the given Element pointer (when the element is out of bounds) should rotate with direction change.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Minimap Image Size</td>
+
+                                    <td>Size of the Texture representing the given POI.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Always Visible In Range</td>
+
+                                    <td>If the given POI Element is always visible, even when out of bounds.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MiniMapElementInfo - Visibility Radius</td>
+
+                                    <td>If the given POI Element is not always visible, the radius around the player beyond which the element will not be visible.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Can Hover</td>
+
+                                    <td>If the give POI displayed in Map Widget can have a custom event when mouse cursor is hovered on it. This property can be used to display tooltips on custom POI, or change its size while hovering.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Can Navigate</td>
+
+                                    <td>If the give POI displayed in Map Widget can have a custom be marked for navigation.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Can Hover When Selected</td>
+
+                                    <td>If the give POI displayed in Map Widget can have a custom event when mouse cursor is hovered, while it is marked for navigation.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Show Distance</td>
+
+                                    <td>This property can be used to selectively show distances for only certain types of POI Map Elements.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Allow Multi Selection</td>
+
+                                    <td>If multiple instances of the given POI Element can be marked for navigation.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Unique Selection ID</td>
+
+                                    <td>When MultiSelection is set to true, we need to provide a Unique ID that is checked to easily identify the selection type and mark multiple instances of the POI Element having same Selection ID accordingly.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Icon</td>
+
+                                    <td>Texture representing the corresponding POI Element type displayed in the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Hovered Icon</td>
+
+                                    <td>Texture representing the corresponding POI Element type displayed in the Map when the element is hovered with mouse cursor.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Selected Icon</td>
+
+                                    <td>Texture representing the corresponding POI Element type displayed in the Map when the element is marked for navigation.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Size</td>
+
+                                    <td>Size of the POI Widget Element.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Hover Size Ratio</td>
+
+                                    <td>Size ratio of the POI Widget Element with respect to the original size, when the Element is hovered upon.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Selected Size Ratio</td>
+
+                                    <td>Size ratio of the POI Widget Element with respect to the original size, when the Element is marked for navigation.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Element Selected Hover SizeRatio</td>
+
+                                    <td>Size ratio of the POI Widget Element with respect to the original size, when the Element is already marked for navigation and is hovered upon.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Minimum Visibility By Zoom Level</td>
+
+                                    <td>If the Element should be visible below a minimum zoom level of the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Minimum Zoom Level</td>
+
+                                    <td>Minimum Zoom Level of the Map below which the given Element type will not be visible, if <strong>MinimumVisibilityByZoomLevel</strong> is set to true.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Maximum Visibility By Zoom Level</td>
+
+                                    <td>If the Element should be visible beyond a maximum zoom level of the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Maximum Zoom Level</td>
+
+                                    <td>Maximum Zoom Level of the Map beyond which the given Element type will not be visible, if <strong>MaximumVisibilityByZoomLevel</strong> is set to true.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Always Visible</td>
+
+                                    <td>If the given POI Element type is always visible within range.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Visibility Radius</td>
+
+                                    <td>Radius around player beyond which the given POI Element type will not be visible, if <strong>AlwaysVisible</strong> is set to false.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - Visible Outside Range</td>
+
+                                    <td>If the given POI Element type is visible even outside current range of the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - ToolTip Data</td>
+
+                                    <td>An array of strings passed in the ToolTipWidget corresponding to the given POI Element type.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>MapElementInfo - ToolTip Widget Class</td>
+
+                                    <td>The Widget class for the ToolTip that is displayed, when the given Element type is hovered upon.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>POIElement Datatable represents Points of Interest that are added in Minimap , Map or both, depending on the properties set.</li>
+
+                        <li>Each row in POIElement table contains properties specific to a type of POI Actor placed in the world.</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="MinimapWidget">
+
+                    <h6>The Minimap Widget</h6>
+
+                    <img src="images/imaps/MinimapWidget.png">
+
+                    <p>
+
+                        <br />Widgets derived from the base class <strong>MinimapWidget</strong> can be used to design your customized Minimap. Minimaps are texture based and each MapBoundsActor corresponds to a Minimap Texture that would represent the
+                        area within the respective Bounds. Minimaps can be rectangular as well as circular in nature with optional AutoRotate feature to automatically rotate the Minimap based on the Character rotation. Minimaps can have Zoom Levels ranging
+                        between 0 and 1, with 1 being completely Zoomed Out. The Zoom Level can either be defined in the corresponding Material Instance applied on the Minimap, or via fixed Zoom Area, which will automatically calculate the Zoom Level
+                        based on the predefined area, irrespective of the Bounds Size. Minimap Widgets calculate and display the position of the player and the Points of Interest in realtime.
+
+                    </p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Property Name</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Initial Rotation</td>
+
+                                    <td>Initial Rotation of the entire Minimap Widget.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>AutoRotate Map</td>
+
+                                    <td>If the Minimap should be automatically rotated based on the rotation of the player pawn.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Minimap Material</td>
+
+                                    <td>Parameterized material applied to the Minimap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Minimap Circle Masked Material</td>
+
+                                    <td>Parameterized material applied to the Minimap, when the Minimap is set to be circular.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Allow Circle Mask</td>
+
+                                    <td>If the Minimap should be Circular shaped. If this is set to true, we need to set a material in <strong>MinimapCircleMaskedMaterial</strong>.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Player Angle Offset</td>
+
+                                    <td>Offset the rotation of the player arrow.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Custom Navigation Icon</td>
+
+                                    <td>Icon displayed in the Minimap representing custom Navigation marker set in the map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Custom Navigation Image Size</td>
+
+                                    <td>Size of the Image Widget representing the custom Navigation marker in the Minimap.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Centrical Player Position</td>
+
+                                    <td>If the position of the player marker is always at the center of the Minimap.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>Texture Based Minimap Widget, with optional Circular Masking.</li>
+
+                        <li>Each MapBoundsActor instance placed in the level represents a region in the Minimap and has its own Texture which should exactly map to the Bound Area enclosed by the MapBoundsActor.</li>
+
+                        <li>Zoom Level in the Minimap can be either user defined which is set in the material instance applied on the Minimap, or fixed area, where Zoom is autocalculated based on the given area irrespective of the Bounds Size.</li>
+
+                        <li>Static and Dynamic Points of Interest can be displayed in Minimap and can be added and modified as entries in the POIElement DataTable.</li>
+
+                        <li>Static Points of Interest are mapped with the MapBoundsActor enclosing them, and will only be replaced when Bounds change.</li>
+
+                        <li>Dynamic Points of Interest are not specific to any MapBoundsActor, so which Dynamic POIs should be currently displayed in the Minimap is recalculated at every tick.</li>
+
+                        <li>The Minimap Widget calculates the position of Static and Dynamic POIs as well as the player position in realtime.</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="MinimapElementWidget">
+
+                    <h5>The MinimapElement Widget</h5>
+
+                    <img src="images/imaps/MinimapElementWidget.png">
+
+                    <p>
+
+                        <br />Widgets derived from the base class <strong>MinimapElementWidget</strong> are used to design Points of Interest in the MinimapWidget. It has a variety of features, including an optional visibility radius beyond which it won't
+                        be visible, and custom pointer textures to determine its location when it is out of Minimap's range.
+
+                    </p>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>MinimapElementWidgets are used to design Points of Interest Elements displayed in the Minimap.</li>
+
+                        <li>Each POI Actor class has its own set of unique properties corresponding to its MinimapElementWidget, defined in a structure called MinimapElementInfo in the POIElement DataTable.</li>
+
+                        <li>MinimapElements can have custom visibility based on a user defined radius around the player character, or can be set to always visible.</li>
+
+                        <li>MinimapElements trigger Notifications when it comes in and goes out of bounds of the Minimap, to create custom Pointer Images, each of which determine the direction the respective MinimapElement is located.</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="MapWidget">
+
+                    <h5>The Map Widget</h5>
+
+                    <img class="img-responsive" src="images/imaps/MapWidget.png">
+
+                    <p>
+
+                        <br />Widgets derived from the base class <strong>MapWidget</strong> are used to design Interactive Map System. Map can be Zoomed In/Out and Panned Forward/Backward, Right/Left. Just like Minimap, a Map will also contain several
+                        Points of Interest Elements, whose locations are calculated based on the corresponding Actors they represent in the world.
+
+                    </p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Property Name</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Map Material</td>
+
+                                    <td>Parameterized material applied to the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Allow Multi Selection</td>
+
+                                    <td>If multiple custom markers can be add to the map for Navigation. This should not be confused with the similar property in POIElement table, where multi selection determines multiple selection of the POI Elements of
+                                        the same type.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Custom Navigation Marker Size</td>
+
+                                    <td>Size of the Image Widget representing the custom Navigation marker in the Map.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Custom Navigation Icon</td>
+
+                                    <td>Icon displayed in the Map representing custom Navigation marker.</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Show Custom Navigation Distance</td>
+
+                                    <td>This property can be used to choose whether to show distance for the custom navigation marker. It is upto the user to use this property and display the distance widget accordingly, in the UMG widget for the Navigation
+                                        Marker.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>Maps have Zoom and Pan functionalities which can be bound with custom keys and mouse events.</li>
+
+                        <li>Maps contain Points of Interest Elements, whose properties are determined from the class of the Actor it represents, defined in the POIElement DataTable.</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="MapElementWidget">
+
+                    <h6>The MapElement Widget</h6>
+
+                    <img src="images/imaps/MapElementWidget.png">
+
+                    <p>
+
+                        <br />Widgets derived from the base class <strong>MapElementWidget</strong> are used to design Points of Interest in the MapWidget. It has a variety of features, including visibility by Zoom Level, custom ToolTip Widgets, and mark
+                        for Navigations. Widgets derived from the base class <strong>ToolTipWidgetBase</strong> are used to design customized tooltips specific to a MapElement of given Actor class. So every Actor class represented by MapElements can have
+                        their own custom ToolTipWidgets, which appear when a MapElement is hovered.
+
+                    </p>
+
+                    <div class="RememberPointsDiv">
+
+                        <h6>Points to Remember</h6>
+
+                    </div>
+
+                    <ol type="square">
+
+                        <li>MapElementWidgets are used to design Points of Interest Elements displayed in the Map.</li>
+
+                        <li>Each POI Actor class has its own set of unique properties corresponding to its MapElementWidget, defined in a structure called MapElementInfo in the POIElement DataTable.</li>
+
+                        <li>Visibility of the MapElements can be set based on Zoom Level. So a MapElement can either be always visible, or only visible when the current ZoomLevel of the map is within the specified range.</li>
+
+                        <li>ToolTipWidgets are specific to the corresponding Points of Interest Actor classes and would appear in a map when corresponding MapElement is hovered.</li>
+
+                    </ol>
+
+                </div>
+
+                <div id="NavigationWidgets">
+
+                    <h6>The Navigation Widgets</h6>
+
+                    <img src="images/imaps/MapElementWidget.png">
+
+                    <p>
+
+                        <br />The Navigation system is comprised of four sections -
+
+                        <ol class="NumberedList1">
+
+                            <li>
+
+                                The widget derived from <strong>NavigationWidgetContainer</strong> contain all the markers that are placed at the world location of the destination actor, when Navigation is active.
+
+                                <div class="FunctionsTable">
+
+                                    <table class="table table-bordered">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Property Name</th>
+
+                                                <th>Description</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody>
+
+                                            <tr>
+
+                                                <td>Navigation Widget Class</td>
+
+                                                <td>UMG widget representing the Navigation UI that are displayed in the game viewport for every Navigation.</td>
+
+                                            </tr>
+
+                                            <tr>
+
+                                                <td>Custom Navigation Actor Class</td>
+
+                                                <td>This is an optional property which represents the actor class that would be spawned at the world location of every navigation. This can have many purposes, for example, to highlight the navigation, with
+                                                    particle effects.</td>
+
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                Widgets derived from <strong>NavigationWidget</strong> are the elements contained by the <strong>NavigationWidgetContainer</strong> and correspond to Actors placed in the world location, for which Navigation is currently
+                                active. This triggers InBounds and OutofBounds notifications so that we can add custom pointer icon when required, to determine the position of the target at world location, when the Navigation is out of view.
+
+
+
+                            </li>
+
+                            <li>The Navigation markers displayed in the Minimap are derived from <strong>MinimapElementWidget</strong>.</li>
+
+                            <li>Custom Navigation markers that we add in the map are derived from <strong>NavMarkerWidget</strong>.</li>
+
+                        </ol>
+
+
+
+                </div>
+
+            </div>
+
+
+
+            <div id="QuickStart">
+
+                <h5>Quick Start with the Example Project</h5>
+
+                <p>
+
+                    Once you get yourself familiar with various components of this plugin, you can now quickly start with the example project, to understand the basic implementation, before we proceed with in depth tutorials.
+
+                </p>
+
+                <p>When you open the example project, you start with a scene where I have already placed several MapBoundsActors and one MapManager.</p>
+
+                <img src="images/imaps/quickstart_demoMap.png">
+
+                <div id="QSMapBoundsActor">
+
+                    <h6>Customizing The MapBoundsActors</h6>
+
+                    <p>
+
+                        To edit the Bounds size in either axis, you simple modify the corresponding <strong>Bounds Dimensions</strong> from the details panel respectively, instead of scaling the actor. Update the <strong>MinimapTexture</strong> property
+                        to add your own texture that would represent the corresponding MapBoundsActor.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_mapBoundsActors2.png">
+
+                    <p>For non rectangular bounds, such as a building or a cave, you can define custom bound shape via opacity mask textures. You need to add your mask in the <strong>MinimapMaskTexture</strong> property.</p>
+
+                    <img src="images/imaps/quickstart_mapBoundsActors3.png">
+
+                </div>
+
+                <div id="QSMapManager">
+
+                    <h6>Customizing The MapManger</h6>
+
+                    <p>Every level should have only one MapManager which is responsible for necessary calculations of the bounds and communication between Widgets, displaying the Minimap and Map whenever necesarry.</p>
+
+                    <img src="images/imaps/quickstart_mapManager1.png">
+
+                    <p>
+
+                        Extended child actor of the MapManager, called <strong>BP_mapManager</strong>, an instance of which currently placed in the scene, containing some additional functionalities like binding with input components, can be found in <strong>Blueprints</strong>                        folder in the plugin content directory.
+
+                    </p>
+
+
+
+                    <p>
+
+                        Most of the relevant widgets that we had discussed above should be added in the MapManager instance placed in the level, along with the <strong>POIElement</strong> table that would identify and display the Points of Interest Actors
+                        in the Minimap and Map. The Widgets can be found in the <strong>Widgets</strong> folder in the plugin content directory.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_mapManager2.png">
+
+                </div>
+
+                <div id="QSPOIElement">
+
+                    <h6>Adding Points of Interest</h6>
+
+                    <p>
+
+                        The <strong>POIELement</strong> DataTable, derived from the POIElement structure, consists of all the actor classes which we intend to use as Points of Interest to be displayed in our Minimap and Map. An instance of this datatable
+                        can be found in the DataTables folder of the plugin content directory. This needs to be added in the MapManager to display the Points of interest in the Minimap and the Map.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_POIElement1.png">
+
+                    <p><br />To add a new POI type, you need to add a new row in the POIElement Datatable and add your class reference in the <strong>ElementClass</strong> column.</p>
+
+
+
+                </div>
+
+                <div id="QSMinimap">
+
+                    <h6>Customizing The Minimap</h6>
+
+                    <p>Widgets derived from the <strong>MinimapWidget</strong> class are used to design the Minimap. A child instance called <strong>UMG_Minimap</strong> can be found in the <strong>Widgets</strong> folder in the plugin content directory.</p>
+
+                    <p>
+
+                        In the below pic, we can see that the MinimapWidget is comprised of four different controls -
+
+                        <ol>
+
+                            <li>The <strong>MinimapBorder</strong>, which encloses the entire widget and is used to calculate the Size of the Minimap.</li>
+
+                            <li>The <strong>MinimapCanvas</strong>, which contains the Minimap Texture, the Points of Interest and the Player Position.</li>
+
+                            <li>The <strong>Minimap Image</strong>, which displays the Minimap Texture, with the Pan and Zoom level as calculated.</li>
+
+                            <li>The <strong>Player Arrow</strong>, displaying the position and direction of the player.</li>
+
+                        </ol>
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Minimap1.png">
+
+                    <p>Apart from these, we also have static and dynamic POI Elements which are created and positioned at runtime.</p>
+
+                    <p>
+
+                        The event <strong>OnMinimapInitialized</strong> is fired once, during the initialization of the given Minimap Widget. Here we need to call the function <strong>Set Canvas Properties</strong> and pass our <strong>MinimapCanvas</strong>,
+
+                        <strong>MinimapBorder</strong> and the widget representing the Player position.
+
+                    </p>
+
+                    <p>The event <strong>OnMinimapUpdated</strong> is fired at every frame, and it passes the calculated Minimap Material that has proper Pan and Zoom logic applied. We then set the material in our <strong>Minimap Texture</strong>.</p>
+
+                    <img src="images/imaps/quickstart_Minimap2.png">
+
+
+
+                </div>
+
+                <div id="QSMinimapElement">
+
+                    <h6>Customizing The Minimap Element</h6>
+
+                    <p>
+
+                        Widgets derived from the <strong>MinimapElementWidget</strong> class are used to design the Minimap Elements, which represent the Points of Interest within our Minimap Widget. A child instance called <strong>UMG_MinimapElement</strong>                        can be found in the <strong>Widgets</strong> folder in the plugin content directory.
+
+                    </p>
+
+                    <p>
+
+                        The event <strong>OnMinimapElementInitialized</strong> is fired once, during the initialization of the given MinimapElement Widget. <strong>ElmentIcon</strong> is a variable defined in base class, which contains the Texture representing
+                        the given Minimap Element. The texture is set in the POIElement Datatable. We need to use this variable to set the texture for the corresponding UMG control, as shown below.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_MinimapElement1.png">
+
+                    <p>
+
+                        The events <strong>OnWidgetInRange</strong> and <strong>OnWidgetOutofRange</strong> are fired when the actor represented by the given <strong>MinimapElement</strong> goes in Bounds and out of Bounds of the current Minimap area,
+                        respectively. While the variable <strong>ElementIcon</strong> represents the default texture for the element widget, the variable <strong>ElementPointerIcon</strong> represents the texture, if any, when the widget is out of bounds.
+                        This is an optional parameter, and is set in the POIElement Datatable.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_MinimapElement2.png">
+
+                </div>
+
+                <div id="QSMap">
+
+                    <h6>Customizing The Map</h6>
+
+                    <p>
+
+                        Widget derived from the <strong>MapWidget</strong> class is used to design the Map, which has a number of features that are inpired from map system of games from different genres. You can Pan, Zoom In and Out using custom Input
+                        Binding. Different POI Elements can be added based on ZoomLayer. A child instance called <strong>UMG_map</strong> can be found in the <strong>Widgets</strong> folder in the plugin content directory.
+
+                    </p>
+
+                    <p>
+
+                        In the below pic, we can see that the MapWidget is comprised of three different controls -
+
+                        <ol>
+
+                            <li>The <strong>MapBorder</strong>, which encloses the entire widget, displays the Minimap Texture and is used to calculate the Size of the Map.</li>
+
+                            <li>The <strong>Canvas</strong>, which contains the Map Texture, the Points of Interest and the Player Position.</li>
+
+                            <li>The <strong>Player Arrow</strong>, displaying the position and direction of the player.</li>
+
+                        </ol>
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_map1.png">
+
+                    <p>Apart from these, we also have POI Elements which are created and positioned at runtime.</p>
+
+                    <p>
+
+                        The event <strong>OnMapInitialized</strong> is fired once, during the initialization of the Map. This event gives us the material instance corresponding to the entire map area of the current map, which we then set in the respective
+                        widget. Here we also need to call the function <strong>Set Canvas Properties</strong> and pass our <strong>Canvas</strong>, <strong>MapBorder</strong> and the widget representing the Player position.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_map2.png">
+
+                    <p>
+
+                        To enable mouse interaction within Map, it is important to store the current mouse position in a variable. For that I am capturing the <strong>OnMouseMove</strong> event of our <strong>MapBorder</strong>, and setting the
+
+                        <strong>CurrentMousePosition</strong> variable with the position of the mouse.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_map3.png">
+
+                    <p>
+
+                        To Zoom In and Out in the Map, we can call the function <strong>ZoomInOut</strong>. In the MapWidget example, I have bound the function with Mouse Wheel Axis. You can also use the functionality from the MapManager instance by calling
+                        <strong>MapZoomInOut</strong>.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_map4.png">
+
+                    <p>The functions <strong>MapPanForward</strong> and <strong>MapPanRight</strong> can be called from the MapManager instance to Pan the Map material in forward/backward and right/left, respectively, based on the given axis values.</p>
+
+                    <p>
+
+                        To set the navigation markers on button pressed at the given mouse location, we need to call the function <strong>SetMapNavigationOnClicked</strong> from the MapManager instance. For this function to work properly, the current
+                        mouse position must be set, as shown above.
+
+                    </p>
+
+                    <p>Calling the function <strong>ToggleMap</strong> from the MapManager instance would display/hide the current MapWidget.</p>
+
+                    <img src="images/imaps/quickstart_map5.png">
+
+                </div>
+
+                <div id="QSMapElement">
+
+                    <h6>Customizing The Map Element</h6>
+
+                    <p>
+
+                        Widgets derived from the <strong>MapElementWidget</strong> class are used to design the Points of Interest Elements displayed in the Map. A child instance called <strong>UMG_mapElement</strong> can be found in the <strong>Widgets</strong>                        folder in the plugin content directory.
+
+                    </p>
+
+                    <p>The variable <strong>CurrentViewportPosition</strong> is set via Blueprint at the tick event. This is used to check if the given MapElement is within view.</p>
+
+                    <img src="images/imaps/quickstart_mapElement1.png">
+
+                    <p>
+
+                        <br />Based on the properties set in the <strong>POIELement</strong> DataTable against a particular MapElement, the Elements can be Hovered and Selected. The functions <strong>OnHovered</strong> and <strong>OnUnHovered</strong>                        need to be explicitely called from the Widget BP at <strong>OnMouseEnter</strong> and <strong>OnMouseLeave</strong> events. Events <strong>OnSelected</strong> and <strong>OnDeSelected</strong> are triggered when a selectable MapElement
+                        is Selected and DeSelected, respectively.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_mapElement2.png">
+
+                    <p>
+
+                        <br />A MapElement can have different icons with different sizes while being hovered and selected, based on the properties set in the <strong>POIELement</strong> DataTable. The event <strong>OnElementIconChanged</strong> is fired,
+                        when an Icon Update occurs, so that we can update our UMG control accordingly.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_mapElement3.png">
+
+                </div>
+
+                <div id="QSNavigation">
+
+                    <h6>Customizing The Navigation System</h6>
+
+                    <p>
+
+                        As mentioned earlier, the UserWidget class <strong>NavigationWidgetContainer</strong> contains all the navigation markers that are displayed in the game viewport. An instance of this class <strong>UMG_NavigationContainer</strong>                        can be found in the <strong>Widgets</strong> folder in the plugin content directory. This instance is added in our <strong>MapManager</strong> Actor placed in the scene, to enable the Navigational Widgets display.
+
+                    </p>
+
+                    <p>Just like in the Minimap and the Map Widgets, here also we need to call the function <strong>Set Canvas Properties</strong> and pass our <strong>Canvas</strong>.</p>
+
+                    <img src="images/imaps/quickstart_Navigation1.png">
+
+                    <p><br />Points of Interest present in the Map can be marked for Navigation by selecting them, provided they allow selection, via a property called <strong>CanNavigate</strong> defined in the <strong>POIELement</strong> Datatable against
+                        the given POI Actor type.</p>
+
+                    <img src="images/imaps/quickstart_Navigation7.png">
+
+                    <p>
+
+                        <br />An instance of <strong>NavigationWidget</strong>, called <strong>UMG_NavigationElement</strong>, can be found in the <strong>Widgets</strong> folder. This is added in our Container Widget, and represents the navigation UI
+                        corresponding to every waypoint displayed in the game viewport.
+
+                    </p>
+
+                    <p>
+
+                        The event <strong>OnNavigationElementInitialized</strong> is fired when a new navigation is set. The variable <strong>Element Navigation Icon</strong> represents the texture corresponding to the given navigation, and displayed
+                        in the game viewport. This texture is defined in the POIElement Table. We use this variable to set the texutre for our corresponding UMG Control.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation6.png">
+
+                    <p>
+
+                        <br />The event <strong>OnReceiveCurrentTransform</strong> updates the current transform of the destination which corresponds to the given Navigation. The transform is obtained at every frame and can be used to show current distance
+                        to destination, or display notification widget once the destination is reached.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation2.png">
+
+                    <p>
+
+                        <br />Notifications are triggered when the given Navigaiton Widget comes in range and goes out of the range of the game viewport. This is very useful to display custom pointer indicating the direction of the destination, when the
+                        player camera is not directly looking at the destination.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation3.png">
+
+                    <p>
+
+                        <br />The events <strong>OnNavigationInBound</strong> and <strong>OnNavigationOutofBound</strong> are triggered when the destination is aligned with the player camera view, and when the destination is out of view, respectively.
+                        I am using these events to display/hide custom pointer marker that shows direction of the navigation, as shown above.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation4.png">
+
+                    <br />
+
+                    <img src="images/imaps/quickstart_Navigation5.png">
+
+                    <p>
+
+                        <br />To display the Navigation Icon in our Minimap, we need to create a UMG derived from <strong>MinimapElementWidget</strong>. The widget <strong>UMG_MinimapNavElement</strong>, is used to create POI for navigations in the Minimap,
+                        and can be found in the <strong>Widgets</strong> folder. This is added against the property <strong>MinimapNavWidgetClass</strong> in our MapManager instance placed in the scene.
+
+                    </p>
+
+                    <p>
+
+                        Custom Navigation marker can be added in the Map via <strong>NavMarkerWidget</strong> class, an instance of which, called <strong>UMG_NavigationMarker</strong>, is added in the <strong>Widgets</strong> folder. The NavigationMarker
+                        Widget is added in the class defaults of our Map Widget. Custom marker can have unique Navigation Icon displayed in the game viewport and in the Minimap as well. This is set in our POIElement Datatable.
+
+                    </p>
+
+                </div>
+
+                <div id="QSNavigationActor">
+
+                    <h6>The Navigation Actor</h6>
+
+                    <p>
+
+                        When we add a Navigation in our Map, an instance of the Actor class is created at the destination. It is possible to replace this actor with custom actor, which can be used for custom functionalities you would want to link with the given waypoint, like
+                        a visual representation of the target waypoint in the game world, which can be viewed from a distance.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation1.png">
+
+                    <p>
+
+                        An instance of <strong>NavigationWidget</strong>, called <strong>UMG_NavigationElement</strong>, can be found in the <strong>Widgets</strong> folder. This is added in our Container Widget, and represents the navigation UI corresponding
+                        to every waypoint displayed in the game viewport.
+
+                    </p>
+
+                    <p>
+
+                        The event <strong>OnNavigationElementInitialized</strong> is fired when a new navigation is set. The variable <strong>Element Navigation Icon</strong> represents the texture corresponding to the given navigation, and displayed
+                        in the game viewport. This texture is defined in the POIElement Table. We use this variable to set the texutre for our corresponding UMG Control.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation6.png">
+
+                    <p>
+
+                        The event <strong>OnReceiveCurrentTransform</strong> updates the current transform of the destination which corresponds to the given Navigation. The transform is obtained at every frame and can be used to show current distance
+                        to destination, or display notification widget once the destination is reached.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation2.png">
+
+                    <p>
+
+                        Notifications are triggered when the given Navigaiton Widget comes in range and goes out of the range of the game viewport. This is very useful to display custom pointer indicating the direction of the destination, when the player camera is not directly
+                        looking at the destination.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation3.png">
+
+                    <p>
+
+                        The events <strong>OnNavigationInBound</strong> and <strong>OnNavigationOutofBound</strong> are triggered when the destination is aligned with the player camera view, and when the destination is out of view, respectively. I am
+                        using these events to display/hide custom pointer marker that shows direction of the navigation, as shown above.
+
+                    </p>
+
+                    <img src="images/imaps/quickstart_Navigation4.png">
+
+                    <br />
+
+                    <img src="images/imaps/quickstart_Navigation5.png">
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <div id="ImportantFeatures">
+
+                <h5>Important Features</h5>
+
+                <div id="minimapactorComponent">
+
+                    <h6>Minimap Actor Component</h6>
+
+                    <p>
+
+                        So far we have seen that to add Points of Interest Elements in the Minimap and the Map, for actors belonging to specific classes, we simply add the class type in the POIElemet table, and specify the properties respective to the POI for that particular
+                        Actor class type, and all actors in the current scene having the same class type will have same type of POI Element. But, sometimes, it is far convenient and useful to assign specific instances of a class a particular POI type,
+                        or simply map some spefic actors in the level with some specific POI type. To do so, we need to attach <strong>Minimap Actor Component</strong> in the Actor that we want to assign a custom POI Element into.
+
+                    </p>
+
+                    <p><strong>Minimap Actor Component</strong> is a Blueprint derived from ActorComponent, and demonstrates how we can add custom POI Element for a specific actor in our MapManager.</p>
+
+                    <img src="images/imaps/minimapactorComponent1.png">
+
+                    <img src="images/imaps/minimapactorComponent2.png">
+
+                    <p>
+
+                        Just like how a normal ActorComponent works, you can attach the <strong>Minimap Actor Component</strong> to either your Blueprint Actor, or an actor already placed in the level, and then edit exposable structure variable <strong>POIElement</strong>                        to modify the properties for the corresponding POI Element of the given actor.
+
+                    </p>
+
+                    <img src="images/imaps/minimapactorComponent3.png">
+
+                    <p>
+
+                        <strong>Minimap Actor Component</strong> is very useful for displaying other players in a <strong>Multiplayer</strong> game, when we attach the Component to our Player Pawn class. To hide the marker representing the player pawn,
+                        as we already have a custom player marker added in our MinimapWidget, we can perform an additional condition check in our <strong>MinimapComponent</strong> class, found inside the Blueprints folder of our Plugin Content Directory.
+
+                    </p>
+
+                    <img src="images/imaps/minimapactorComponent4.png">
+
+
+
+                </div>
+
+                <div id="MinimapMasking">
+
+                    <h6>Minimap Masking</h6>
+
+                    <p>
+
+                        As we have seen, the Bound shapes of the instances of MapBoundsActor class that we place in our level to define our Minimap Bounds, are rectangular. While this will solve purpose in most cases, when we do not explicitely switch between bounds in a single
+                        level, there may be scenarios, when the limitation of the Bounds being rectangular will not prove useful when we are switching between multiple Bounds within the same level. For example, in an open world game, when we move inside
+                        a cave, we might change the Minimap Bounds to show a different region, which is the interior of cave, and as soon as we come outside, we show the Minimap region representing the outside area. The cave is a non rectangular area,
+                        and we must display smooth transition between the outside and the inside bounds. To achieve this, we use Minimap Mask Texture, in the instance of the MapBoundsActor the given non rectangular bounds is associated with. A Mask Texture
+                        is a just an opacity texture of the actual Minimap Texture, where the black pixels represent the area which is outside the bounds of the current region. So, when the player is moved to the region corresponding to the black pixel
+                        of the Minimap Mask Texture, the current location of the player will not be counted as being inside this non rectangualar bounds, and the outer Bounds area(which might represent world map, or a bigger region enclosing the current
+                        region) will be considered as the current Bounds.
+
+                    </p>
+
+                    <p>Minimap Mask Texture can be added to the corresponding MapBoundsActor placed in the Scene.</p>
+
+                    <img src="images/imaps/MinimapMasking1.png">
+
+                </div>
+
+                <div id="CircularMinimap">
+
+                    <h6>Circular Minimap</h6>
+
+                    <p>
+
+                        Circular Minimaps are created via Circular Opacity Masks applied to the material. To make your minimap circular in nature, which would not only changes the shape of the Minimap but will also ensure that the POI elements always stay within the circle,
+                        you need to check the variable <strong>Allow Circle Mask</strong> in your Minimap Widget. You can also set your circular Minmiap to auto rotate with player rotation by checking the variable <strong>Auto Rotate Map</strong>.
+
+                    </p>
+
+                    <video width="1100" src="videos/imaps/CircularMinimap.mp4" type="video/mp4" autoplay loop controls />
+
+                </div>
+
+                <div id="NavExitActors">
+
+                    <h6>Navigation Exit Actors</h6>
+
+                    <p>
+
+                        Navigation Exit Actors are the actors placed on scene which would be representing the exit point for the given navigation if the destination navigation is in different Bounds. For example if you are in a cave and you want to display the cave door as current
+                        navigation , if the destination is outside the cave, then you can add the door as an exit actor. Multiple Navigation actors can be added against a given MapBoundsActor, to indicate that there are multiple points of exit, each of
+                        which can be used to exit the immediate Bounds and navigate towards the destination.
+
+                    </p>
+
+                    <p>The array <strong>Navigation Exit Actors</strong>, in a given MapBoundsActor instance, contains references of dummy actors placed in the scene, which would display the location of local navigations when the player is inside the given
+                        Bounds.
+                    </p>
+
+                    <video width="1100" src="videos/imaps/NavigationExitActors.mp4" type="video/mp4" autoplay loop controls />
+
+                </div>
+
+                <div id="CentricalPlayerPos">
+
+                    <h6>Centrical and Acentric Player Position</h6>
+
+                    <p>Centrical Player Position has the Player marker position always located at the center of the Minimap. The Points of Interest elements, as well as the Minimap texture panning, are adjusted relative to the position of the player location
+                        being at the center.</p>
+
+                    <p>Acentric Player Position has the Player marker position calculated based on the current Bounds of the Minimap. So in this case, if the player moves towards the edges of the current MapBoundsActor, the player marker will accordingly
+                        move towards the edges of the Minimap.</p>
+
+                    <p>The class defauts variable <strong>Centrical Player Position</strong>, in the Minimap Widget, should be checked, to enable Centrical Player System.</p>
+
+                    <video width="1100" src="videos/imaps/CentricalPlayerPosition.mp4" type="video/mp4" autoplay loop controls />
+
+                    <p>It should be noted that for Centrical Player System, when the player moves towards the edge of the current Bounds, </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="RuntimeActions">
+
+                <h5>Runtime Actions</h5>
+
+                <div id="AddingPOIRuntime">
+
+                    <h5>Adding runtime POI Actor</h5>
+
+                    <p>
+
+                        We have already learnt about how we use POIElement Datatable to add POI Elements corresponding to specific actors present in the scene. But by default, these POI ELements will already be created at the BeginPlay event, when the current scene is being
+                        played. This will not be useful to add POI element in our Minimap, when a new POI Actor is dynamically spawned in the level. And if an enemy or any NPC representing specific POI in the Minimap, is killed, then we also need to remove
+                        the corresponding POI Element for the actor who was just killed off. To handle these scenarios, we have couple of functions, for Adding new actor at runtime, or for removing an actor from the scene.
+
+                    </p>
+
+                    <p>The function <strong>Add Map Actor</strong> called from the current MapManager instance, after an AI is spawned, will add a POI element representing the type of the respective AI, as found from the POIElement Datatable.</p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Input Parameter</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Actor</td>
+
+                                    <td>The spawned actor needs to be passed, for looking up in the POIElement Datatable, the class of the given actor, and creating the corresponding POI Element which is mapped with the spawned actor.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <img src="images/imaps/Runtime_AddMapActor.png">
+
+                    <p>The function <strong>Remove Map Actor</strong> called from the current MapManager instance, before an AI is destroyed, will remove the POI element mapped with the given Actor. It is to be noted that this needs to be called before destroying
+                        an Actor.</p>
+
+                    <div class="FunctionsTable">
+
+                        <table class="table table-bordered">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Input Parameter</th>
+
+                                    <th>Description</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Actor</td>
+
+                                    <td>The actor to be destroyed needs to be passed, for looking up the POI Instance mapped with the given actor, and removing it.</td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <img src="images/imaps/Runtime_RemoveMapActor.png">
+
+                    <p />
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+
+
+    </div>
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/smoothscroll.js"></script>
+    <script src="scripts/documentation.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+</body>
+
+</html>

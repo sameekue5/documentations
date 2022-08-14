@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+
+    <!-- Custom styles for this template -->
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+
+    <link href="content/site.css" rel="stylesheet" />
+
+    <link href="content/loader.css" rel="stylesheet" />
+
+    <link href="content/sidenav.css" rel="stylesheet">
+
+    <link href="content/documentation.css" rel="stylesheet">
+
+    <link href="content/mainpage.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>PostgreSQL | Documentation</title>
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/docheader.html" : "https://docs.athiangames.com/docheader"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/Documentations/footer.html" : "https://docs.athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+
+</head>
+
+
+
+<body id="page-top">
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+
+        <div id="HeaderNavDiv"></div>
+
+
+        <div class="sidenav" id="SideNavigationDiv">
+
+            <ul>
+
+                <li class="dropdown-btn"><a href="#GettingStarted">Getting Started</a></li>
+
+                <li class="dropdown-btn"><a href="#DatabaseConnection">Setting up Database Connection</a></li>
+
+                <li class="content">
+                    <a href="#OpenConnection">Creating New Connection</a>
+                    <a href="#CloseConnection">Closing Connection</a>
+                </li>
+
+                <li class="dropdown-btn"><a href="#Writingqueries">Writing SQL queries</a></li>
+
+                <li class="content">
+                    <a href='#UpdateQueries'><span>Update Query</span></a>
+                    <a href='#SelectQueries'><span>Select Query</span></a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <div class="DocContainer">
+
+            <h1>PostgreSQL Integration for UE4 Documentation</h1>
+
+            <p>
+
+                This documentation lets you quickly get started with connecting your PostgreSQL Server with your Unreal Projects, via Blueprints.
+
+            </p>
+
+            <div id="GettingStarted">
+
+                <h5>Getting Started</h5>
+
+                <p>
+
+                    To get started, ensure that the plugin is installed, by visiting the Plugin Window, as shown below:
+
+                </p>
+
+                <img src="images/postgresql/postgresqlpluginwindow.png">
+
+                <p>
+
+                    If you are unsure regarding how to work with PostgreSQL, you can visit this link to get yourself started with PostgreSQL. <a href="https://dev.PostgreSQL.com/doc/postgresql-getting-started/en/">https://dev.PostgreSQL.com/doc/postgresql-getting-started/en/</a>.
+
+                </p>
+
+                <p>
+
+                    When you download the plugin from the Launcher, this is installed as an Engine plugin, so in order to view its contents you need to enable <strong>Show Engine Content</strong> from the View Options.
+
+                </p>
+
+
+                <div id="PostgreSQLDBConnectionActor">
+                    <p>
+                        Prior to Initializion of any connection to your PostgreSQL server, you need to place an instance of <strong>PostgreSQLDBConnectionActor</strong> Class in your level. This is an actor class responsible for asynchronous connection
+                        and communication with your database. You will get an instance of this class, BP_PostgreSQLDBConnectionActor, in your plugin content directory, along with other Widget Blueprints, in the respective folders, as an excellent starting
+                        point.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="DatabaseConnection">
+
+                <h5>Setting up Database Connection</h5>
+
+                <p>
+                    Before you begin writing our SQL queries and executing them in your database, you first need to establish a connection with your server.
+                </p>
+
+                <div id="OpenConnection">
+                    <h6>Creating New Connection</h5>
+
+                        <p>
+                            Once you have the instance of <strong>PostgreSQLDBConnectionActor</strong> placed in your level, you need to get a reference of it whenever you want to create a new connection, and then call the function <strong>CreateNewConnection</strong>.
+                            The function <strong>CreateNewConnection</strong> takes the necessary parameters that your server is going to need , and asynchronously request for the connection to be established.
+
+                        </p>
+
+                        <img src="images/postgresql/createnewconnection.png" style="width:100%; margin:10px;">
+
+                        <div class="FunctionsTable">
+
+                            <table class="table table-bordered">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Input Parameter</th>
+
+                                        <th>Description</th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>Server</td>
+                                        <td>This parameter takes your server address.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DBName</td>
+                                        <td>This parameter takes the name of your database.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UserID</td>
+                                        <td>This parameter takes your login ID.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password</td>
+                                        <td>This parameter takes your login Password.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Extra Params</td>
+                                        <td>Name-Value Pair Map for additional parameters that your database server might need.</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <p>
+                            Since the process is asynchronous, you need to receive the notification on connection completion, and whether the connection is successful or failed. This will allow you to proceed to the next step, which includes writing queries and passing them from
+                            UE4 to your database server.
+                        </p>
+
+                        <p>
+                            When the State of your connection chages, you will be notified via the event <strong>OnConnectionStateChanged</strong>. You add this event listener in your
+                            <strong>PostgreSQLDBConnectionActor</strong> Blueprint.
+                        </p>
+                        <img src="images/postgresql/onconnectionstatechanged.png" style="width:100%; margin:10px;">
+
+                        <div class="FunctionsTable">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Output Parameter</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Connection Status</td>
+                                        <td>This is a boolean value stating whether the connection is successful, or failed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Error Message</td>
+                                        <td>This parameter contains the error returned while trying to connect to the server, if the connection status is failed. This will be empty for successful connections.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+
+                <div id="CloseConnection">
+                    <h6>Closing Connection</h6>
+                    <p>
+                        To close your database connection at any point of time, get the reference to your PostgreSQLDBConnectionActor, and call the function
+                        <strong>CloseConnection</strong>. This will terminate and free your current connection, and for further Database operations, you need to reestablish your connection.
+                    </p>
+                    <img style=" width: 100%;" src="images/postgresql/closeconnection.png" alt="CloseConnection">
+
+                </div>
+            </div>
+
+            <div id="Writingqueries">
+
+                <h5>Writing SQL queries</h5>
+
+                <p>
+
+                    Once the connection is successfully extablished, you can now start forming your SQL queries. Forming queries can be categorized in two types, queries that modify data to the database (INSERT, UPDATE, DELETE), or the queries that fetch data from the database
+                    (SELECT). We will discuss these two categories one by one.
+
+                </p>
+
+
+                <div id="UpdateQueries">
+                    <h6>Update Queries</h6>
+
+                    <p> To asynchronously modify data in your table , call the function <span class="FunctionName">UpdateDatafromQuery</span>.</p>
+
+                    <p><img style=" width: 100%;" src="images/postgresql/updatedatafromquery.png" alt="updatedatafromquery"></p>
+
+                    <div class="FunctionsTable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Input Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Query</td>
+                                    <td>This is the query string that you need to create for making changes to your database, like creating a table, inserting, updating or deleting data from your table, or dropping table entirely.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>
+
+                        After calling the Update function , you need to add the event listener, <strong>OnQueryUpdateStatusChanged</strong>, to get the notification when your update query has been processeed. The event listener will give you the appropriate
+                        response it receives from server, with an error message if the query execution has failed.
+
+                    </p>
+
+                    <p><img style=" width: 100%;" src="images/postgresql/onqueryupdatestatuschanged.png" alt="onqueryupdatestatuschanged"></p>
+
+
+                    <div class="FunctionsTable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Output Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Is Successful</td>
+                                    <td>Returns true if the Query is successfully executed, false otherwise.</td>
+                                </tr>
+                                <tr>
+                                    <td>Error Message</td>
+                                    <td>Returns the error message, if the Query execution is failed, otherwise returns an empty string
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="SelectQueries">
+                    <h6>Select Queries</h6>
+
+                    <p> To asynchronously select data from your table , call the function <span class="FunctionName">SelectDatafromQuery</span>.</p>
+
+                    <p><img style=" width: 100%;" src="images/postgresql/selectdatafromquery.png" alt="selectdatafromquery"></p>
+
+                    <div class="FunctionsTable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Input Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Query</td>
+                                    <td>This is the query string that you need to create to select data from your table, and retrieving the resulsets.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>
+
+                        Just how you added an event listener for your update query , you also need an event listener, <strong>OnQuerySelectStatusChanged</strong>, to receive the notification when your select query has been processeed, along with the desired
+                        resultsets.
+
+                    </p>
+
+                    <p><img style=" width: 100%;" src="images/postgresql/onqueryselectstatuschanged.png" alt="onqueryselectstatuschanged"></p>
+
+
+                    <div class="FunctionsTable">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Output Parameter</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Is Successful</td>
+                                    <td>Returns true if the Query is successfully executed, false otherwise.</td>
+                                </tr>
+                                <tr>
+                                    <td>Error Message</td>
+                                    <td>Returns the error message, if the Query execution is failed, otherwise returns an empty string
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Result by Column</td>
+                                    <td>This will return an array of structured variable called <strong>PostgreSQLDataTable</strong>. This represents a column in the table and contains two properties, <strong>ColumnName</strong> and <strong>ColumnData</strong>.</td>
+                                    <p>
+                                        ColumnName contains the header name of the column of the current instance of our initial array that we get by executing our select query. If you want to display data of a specific column, you can use this variable to match the column name.
+                                    </p>
+                                    <p>
+                                        ColumnData is an array of string consisting of all the elements of a given column. So you can easily set up a for-loop here to get all the elements of a particular column iteratively.
+                                    </p>
+                                </tr>
+                                <tr>
+                                    <td>Result by Row</td>
+                                    <td>This contains an array of structured variable called <strong>PostgreSQLDataRow</strong>. This structure contains an array of string that represents values of an entire row. So the number of elements in this string array
+                                        equals number of columns, and number of elements in the Result by Row array equals number of rows in the output of the Select query.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <p>
+                        Below images display an example of how we can use Result By Row and Result By Column structures to store and display selected data retrieved from the server to our UE4 UI, as part of UMG widget.
+                    </p>
+                    <img style=" width: 100%;" src="images/postgresql/resultbycolumnexample.png" alt="resultbycolumnexample">
+                    <img style=" width: 100%;" src="images/postgresql/resultbyrowexample.png" alt="resultbyrowexample">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="Footer" id="FooterDiv">
+    </div>
+
+    </div>
+
+
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/smoothscroll.js"></script>
+    <script src="scripts/documentation.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+
+</body>
+
+</html>

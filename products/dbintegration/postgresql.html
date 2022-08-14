@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8" />
+
+    <title>PostgreSQL for UE4</title>
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+
+    <link href="content/site.css" rel="stylesheet" />
+
+    <link href="content/loader.css" rel="stylesheet" />
+
+    <link href="content/mainpage.css" rel="stylesheet">
+
+    <link href="content/productpage.css" rel="stylesheet">
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/header" : "https://athiangames.com/header"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/footer" : "https://athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+
+</head>
+
+<body>
+
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+
+        <div id="HeaderNavDiv"></div>
+
+        <div class="ImageWrapper">
+
+            <img class="custom-mysql-height" src="images/postgresql/postgresqlcover.png">
+
+            <div class="OverlayText ProductTitle">
+
+                <h1>PostgreSQL Integration</h1>
+
+                <h2>for Unreal Engine 4</h2>
+
+                <p>
+
+                    PostgreSQL Integration is a Plugin that lets you connect your UE4 projects with PostgreSQL Server. Easily execute queries from Blueprints to store and retrieve data from your database. Build your own queries and select and update data to your database
+                    directly from Blueprints. No restrictions in query formation. Any query working inside SQL Client , works here, which means you can select and update multiple data at once , use joins and sub-queries, as well as create and drop tables
+                    via Blueprints.
+
+                </p>
+
+                <button type="button" onclick="window.open('https://www.unrealengine.com/marketplace/en-US/product/postgresql-integration')">
+
+                    Get It Here
+
+                </button>
+
+                <button type="button" onclick="return ResolveDocumentationURL('doc_postgresql')">
+                    Documentation
+                </button>
+
+                <button type="button" onclick="window.open('https://discord.gg/RnMFhX6')">
+
+                    Join Discord
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="container">
+            <div class="SectionDiv">
+
+                <div class="SectionDivRow">
+
+                    <h1>FEATURES</h1>
+
+                </div>
+
+                <div class="SectionDivRow">
+
+                    <div class="SectionContent">l
+
+                        <h2>1. Asynchronous Connection to your PostgreSQL Server. Asynchronous Connection ensures that your main thread will not be blocked if the connection takes time.</h2>
+
+                        <h2>
+
+                            2. Form your own query and pass as string input , directly within your Blueprint or C++ class.
+
+                        </h2>
+
+                        <h2>
+
+                            3. Write Insert , Update and Delete Queries to modify data in the SQL Server. Create and Drop Tables directly from Blueprints.
+
+                        </h2>
+
+                        <h2>
+
+                            4. Create custom connection string format with different protocols and other connection parameters, as required by your server.
+
+                        </h2>
+
+                        <h2>
+
+                            5. Write Synchronous as well as Asynchronous queries. With Asynchronous queries , you can keep the UI interactive and perform other operations while the query execution happens in the background.
+
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+
+    </div>
+
+
+
+    <script src="scripts/producttemplate.js"></script>
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+
+</body>
+
+</html>

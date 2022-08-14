@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+
+    <script>
+        var base = document.createElement('base');
+        var servername = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? 'http://localhost/Website_AthianGames/' : 'https://athiangames.com/';
+        base.href = servername;
+        document.getElementsByTagName('head')[0].appendChild(base);
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AOS | Film And Special Effects</title>
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="content/bootstrap.css" rel="stylesheet">
+    <link href="content/stylesheet-main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="content/pagenavigation.css" rel="stylesheet">
+
+    <link href="content/scrolling-nav.css" rel="stylesheet">
+
+    <link href="content/site.css" rel="stylesheet" />
+    <link href="content/loader.css" rel="stylesheet" />
+    <link href="content/mainpage.css" rel="stylesheet">
+    <link href="content/productpage.css" rel="stylesheet">
+    <link href="content/twentytwenty.css" rel="stylesheet">
+    <link href="content/aoslightbox.css" rel="stylesheet">
+    <link href="content/lightbox.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <script>
+        $(function() {
+            var islocal = (location.hostname === "localhost" || location.hostname === "127.0.0.1");
+            var headerurl = islocal ? "http://localhost/Website_AthianGames/header.html" : "https://athiangames.com/header"
+            $("#HeaderNavDiv").load(headerurl);
+
+            var footerurl = islocal ? "http://localhost/Website_AthianGames/footer.html" : "https://athiangames.com/footer"
+            $("#FooterDiv").load(footerurl);
+        });
+    </script>
+
+</head>
+
+<body>
+
+
+    <div class="ld ld-breath ld.reverse" id="loader">
+    </div>
+
+
+
+    <div id="Contents" style="visibility:hidden;" class="video-content-sec">
+        <div id="HeaderNavDiv"></div>
+        <template id="SPPTypesTemplate">
+            <div style="margin-left:40px; margin-top: 30px;">
+                <a id="ImageCardLink" style="width: 400px; height: 300px;">
+                    <div class="ImageCardLinkContent" id="ImageContainerDiv">
+                        <div id="ImageInnerDiv">
+                            <img id="thumbnailImage" src = "images/artofshader/stylizedpostprocess/stylizedthumbnail.png" style="height:auto;width:300px;">
+                            <div class="ImageCardTextBlock" style="height:auto;width:300px;">
+                                <p>
+                                    <span class="ImageCardTitle" id="Title" style="margin:10px;"></span>
+                                    <br/> <br/>
+                                  <span class="ImageCardContent" id="Contents"></span>
+                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </template>
+
+
+        <template id="SPPLightBoxTemplate">
+            <div class="LightBox-Tab">
+                <h4 id = "Title">TItle</h4>
+                <button type=" button " onclick="window.open( 'https://discord.gg/6qh6Cuy') ">Get It Here</button>
+              
+             </div>
+           
+            <!-- <div id = "FullBlend" class="tabcontent" style="display: block;">
+                <iframe id="videofullblend" 
+                onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';" scrolling="no" 
+                ></iframe>
+            </div>
+            <div id = "HalfBlend"  class="tabcontent">
+                <iframe id="videohalfblend"
+                onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';" scrolling="no" 
+                ></iframe>
+            </div> -->
+           
+       </template>
+
+        <template id="SPPNaviagationTemplate">
+            <a id = "NavAnchor"></a>
+        </template>
+
+        <div class="ImageWrapper">
+
+            <img src="images/artofshader/stylizedpostprocess/stylizedcover.jpg">
+
+            <div class="OverlayText ProductTitle frame-overlaytext">
+
+                <p>
+
+                    Art of Shader - Stylized Post Process is a pack of more than 30 Post Process Blendable Materials that you customize and tweak to create a unique stylized look for your scene. The Blueprint Actors facilitate the easy combining, blending and grouping of
+                    the Post process materials based on certain common properties. From WaterColor, OilPaint, Aquarelle, Cartoon, ComicBook , CelShaded and many more Effects, choose, combine and customize via the parameterized material instances to suit
+                    your style.
+                </p>
+                <button type="button" onclick="window.open('https://www.unrealengine.com/marketplace/en-US/product/art-of-shader-stylized-post-process-pack')">
+                        Get It Here
+                </button>
+                <button type=" button " onclick="window.open( 'https://discord.gg/fBCkdhM') ">Join Discord</button>
+
+            </div>
+
+        </div>
+
+
+        <div class="ImageCardContainer">
+            <div class="ImageCardRow" id="SPPTypesDiv">
+            </div>
+        </div>
+
+
+        <div class="ShaderPageNav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="ShaderPages" id="ShaderPageUL">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="LightBox" id="LightBoxDiv">
+            <span class="close cursor" onclick="CloseLightBox()">&times;</span>
+            <div class="LightBox-content" id="LightBoxContentDiv">
+            </div>
+        </div>
+
+
+        <!-- <div class="ShaderListDiv">
+            <div>
+                <span class="ShaderListHeader">MainShaders</span>
+                <div class="EffectSideNav">
+                    <ol type="1" id="MainSPPTypesList">
+                    </ol>
+                </div>
+                <span class="ShaderListHeader">SceneShaders</span>
+                <div class="EffectSideNav">
+                    <ol type="1" id="SceneSPPTypesList">
+                    </ol>
+                </div>
+
+            </div>
+
+        </div> -->
+        <!-- <div class="EffectContainer" id="EffectContainerID">
+            <div class="EffectContainerDiv">
+                <img id="thumbnailImage" src="images/artofshader/waitingforashader.png" style="width: 95%; opacity: 0;">
+            </div>
+            <div class="EffectContainerDivStack" id="SPPLightBoxParentDiv">
+
+            </div>
+        </div>
+
+        <template id="SPPListTemplate">
+            <li id = "SPPList">
+                <button id = "SPPListButton"></button>
+            </li>
+        </template> -->
+
+        <div class="Footer" id="FooterDiv">
+        </div>
+
+    </div>
+
+
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="scripts/commontemplate.js"></script>
+    <script src="scripts/artofshader/filmandspecialeffects.js"></script>
+    <script src="scripts/lightbox.js"></script>
+    <script src="js/jquery.event.move.js"></script>
+    <script src="js/jquery.twentytwenty.js"></script>
+    <script>
+        $(function() {
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({
+                default_offset_pct: 0.7
+            });
+            $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({
+                default_offset_pct: 0.3,
+                orientation: 'vertical'
+            });
+        });
+    </script>
+</body>
+
+</html>
